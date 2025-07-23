@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "105225162772",
+    "project_id": "shartflix",
+    "storage_bucket": "shartflix.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105225162772:android:e5a68fcf7d3deeabd79701",
+        "android_client_info": {
+          "package_name": "com.ulaskasim.shartflix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM5T92fu7bYGihwJlAYC4f9D7avnxo010"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

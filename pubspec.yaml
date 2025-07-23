@@ -1,0 +1,135 @@
+name: shartflix
+description: A production-ready movie discovery Flutter application - Sinflix
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State Management
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.7
+
+  # Network
+  dio: ^5.8.0+1
+  retrofit: ^4.6.0
+  json_annotation: ^4.9.0
+
+  # Storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_secure_storage: ^9.2.4
+
+  # Navigation
+  go_router: ^16.0.0
+
+  # UI
+  cached_network_image: ^3.4.1
+  shimmer: ^3.0.0
+  lottie: ^3.3.1
+  flutter_svg: ^2.2.0
+  image_picker: ^1.1.2
+
+  # Utils
+  intl: ^0.19.0
+  logger: ^2.6.1
+  dartz: ^0.10.1
+  get_it: ^8.0.3
+  injectable: ^2.5.0
+
+  # Firebase
+  firebase_core: ^3.15.2
+  firebase_crashlytics: ^4.3.10
+  firebase_analytics: ^11.6.0
+
+  # Permissions
+  permission_handler: ^12.0.1
+
+  # Splash
+  flutter_native_splash: ^2.4.6
+
+  # Security
+  flutter_dotenv: ^5.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Code generation
+  build_runner: ^2.4.7
+  retrofit_generator: ^8.0.4
+  json_serializable: ^6.7.1
+  injectable_generator: ^2.4.1
+  hive_generator: ^2.0.1
+
+  # Linting
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_logo.png"
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - .env
+    - assets/fonts/
+    - assets/images/
+    - assets/lottie/
+    - assets/icons/
+
+  fonts:
+    - family: EuclidCircularA
+      fonts:
+        - asset: assets/fonts/Euclid Circular A Light.ttf
+          weight: 300
+        - asset: assets/fonts/Euclid Circular A Light Italic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Euclid Circular A Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Euclid Circular A Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Euclid Circular A Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Euclid Circular A Medium Italic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Euclid Circular A SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Euclid Circular A SemiBold Italic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Euclid Circular A Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Euclid Circular A Bold Italic.ttf
+          weight: 700
+          style: italic
+
+flutter_native_splash:
+  color: "#141414"
+  image: assets/images/splash.png
+  color_dark: "#141414"
+  image_dark: assets/images/splash.png
+  android_12:
+    image: assets/images/splash.png
+    color: "#141414"
+    icon_background_color: "#141414"
+  android: true
+  ios: true
+  web: false
+  android_gravity: fill
+  ios_content_mode: scaleAspectFill

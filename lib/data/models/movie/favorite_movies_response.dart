@@ -1,0 +1,21 @@
+import 'package:json_annotation/json_annotation.dart';
+
+import 'movie_model.dart';
+
+part 'favorite_movies_response.g.dart';
+
+@JsonSerializable()
+class FavoriteMoviesResponse {
+  final List<MovieModel> movies;
+
+  const FavoriteMoviesResponse({
+    required this.movies,
+  });
+
+  factory FavoriteMoviesResponse.fromJson(Map<String, dynamic> json) =>
+      _$FavoriteMoviesResponseFromJson(json['data'] as Map<String, dynamic>);
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'data': _$FavoriteMoviesResponseToJson(this),
+      };
+}

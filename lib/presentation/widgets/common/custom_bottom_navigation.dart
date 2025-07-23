@@ -1,0 +1,104 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../core/theme/app_theme.dart';
+import '../../../core/constants/asset_constants.dart';
+import '../../../core/extensions/localization_extension.dart';
+import '../../routes/app_router.dart';
+
+class CustomBottomNavigation extends StatelessWidget {
+  const CustomBottomNavigation({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Current route'u al
+    final String currentRoute = GoRouterState.of(context).uri.toString();
+    final bool isHome = currentRoute.contains('/home') || currentRoute == '/';
+    final bool isProfile = currentRoute.contains('/profile');
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildNavButton(
+          context: context,
+          iconPath: AssetConstants.iconHome,
+          label: context.l10n.home,
+          isSelected: isHome,
+          onTap: () {
+            if (!isHome) {
+              context.goNamed(RouteNames.home);
+            }
+          },
+        ),
+        const SizedBox(width: 16),
+        _buildNavButton(
+          context: context,
+          iconPath: AssetConstants.iconProfile,
+          label: context.l10n.profile,
+          isSelected: isProfile,
+          onTap: () {
+            if (!isProfile) {
+              context.goNamed(RouteNames.profile);
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNavButton({
+    required BuildContext context,
+    required String iconPath,
+    required String label,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return Container(
+      height: 40,
+      width: MediaQuery.of(context).size.width * 0.33,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.white.withValues(alpha: 0.2), // Saydam/%20 Beyaz
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        color: isSelected
+            ? Colors.white.withValues(alpha: 0.1)
+            : Colors.transparent,
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                iconPath,
+                width: 28,
+                height: 28,
+                colorFilter: ColorFilter.mode(
+                  isSelected ? AppTheme.primaryRed : Colors.white,
+                  BlendMode.srcIn,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                label,
+                style: const TextStyle(
+                  fontFamily: AssetConstants.fontEuclidCircularA,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                  height: 1.0,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

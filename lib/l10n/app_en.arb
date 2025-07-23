@@ -1,0 +1,367 @@
+{
+    "@@locale": "en",
+    "appName": "Sinflix",
+    "@appName": {
+        "description": "The application name"
+    },
+    "loginTitle": "Hello",
+    "@loginTitle": {
+        "description": "Login page title - Merhabalar in English"
+    },
+    "loginDescription": "Tempus varius a vitae interdum id\ntortor elementum tristique eleifend at.",
+    "@loginDescription": {
+        "description": "Login page description text"
+    },
+    "registerTitle": "Welcome",
+    "@registerTitle": {
+        "description": "Register page title - Hoşgeldiniz in English"
+    },
+    "registerDescription": "Tempus varius a vitae interdum id tortor\nelementum tristique eleifend at.",
+    "@registerDescription": {
+        "description": "Register page description text"
+    },
+    "termsAndConditions": "I have read and accept the user agreement. Please read this agreement to continue.",
+    "@termsAndConditions": {
+        "description": "Terms and conditions text on register page"
+    },
+    "registerNow": "Register Now",
+    "@registerNow": {
+        "description": "Register button text - Şimdi Kaydol"
+    },
+    "loginNow": "Login!",
+    "@loginNow": {
+        "description": "Login action text - Giriş Yap!"
+    },
+    "registerNowAction": "Register!",
+    "@registerNowAction": {
+        "description": "Register action text - Kayıt Ol!"
+    },
+    "notImplementedYet": "This feature is not ready yet",
+    "@notImplementedYet": {
+        "description": "Not implemented message"
+    },
+    "emailRequired": "Email is required",
+    "@emailRequired": {
+        "description": "Email required error message"
+    },
+    "passwordRequired": "Password is required",
+    "@passwordRequired": {
+        "description": "Password required error message"
+    },
+    "nameRequired": "Name is required",
+    "@nameRequired": {
+        "description": "Name required error message"
+    },
+    "confirmPasswordRequired": "Confirm password is required",
+    "@confirmPasswordRequired": {
+        "description": "Confirm password required error message"
+    },
+    "welcome": "Welcome",
+    "@welcome": {
+        "description": "Welcome message"
+    },
+    "login": "Login",
+    "@login": {
+        "description": "Login button text"
+    },
+    "register": "Register",
+    "@register": {
+        "description": "Register button text"
+    },
+    "email": "Email",
+    "@email": {
+        "description": "Email input label"
+    },
+    "password": "Password",
+    "@password": {
+        "description": "Password input label"
+    },
+    "name": "Full Name",
+    "@name": {
+        "description": "Name input label"
+    },
+    "confirmPassword": "Confirm Password",
+    "@confirmPassword": {
+        "description": "Confirm password input label"
+    },
+    "forgotPassword": "Forgot Password",
+    "@forgotPassword": {
+        "description": "Forgot password link text"
+    },
+    "dontHaveAccount": "Don't have an account?",
+    "@dontHaveAccount": {
+        "description": "Don't have account text on login page"
+    },
+    "alreadyHaveAccount": "Already have an account?",
+    "@alreadyHaveAccount": {
+        "description": "Already have account text on register page"
+    },
+    "logout": "Logout",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "termsPrefix": "I have read and agree to the ",
+    "@termsPrefix": {
+        "description": "Privacy first part"
+    },
+    "termsLinkText": "user agreement",
+    "@termsLinkText": {
+        "description": "Privacy link"
+    },
+    "home": "Home",
+    "@home": {
+        "description": "Home tab label"
+    },
+    "termsSuffix": ". Please read this agreement to continue.",
+    "@termsSuffix": {
+        "description": "Privacy last part"
+    },
+    "profile": "Profile",
+    "@profile": {
+        "description": "Profile tab label"
+    },
+    "favorites": "Favorites",
+    "@favorites": {
+        "description": "Favorites tab label"
+    },
+    "discover": "Discover",
+    "@discover": {
+        "description": "Discover tab label"
+    },
+    "movies": "Movies",
+    "@movies": {
+        "description": "Movies section title"
+    },
+    "loading": "Loading...",
+    "@loading": {
+        "description": "Loading indicator text"
+    },
+    "error": "Error",
+    "@error": {
+        "description": "Generic error text"
+    },
+    "retry": "Retry",
+    "@retry": {
+        "description": "Retry button text"
+    },
+    "noData": "No data found",
+    "@noData": {
+        "description": "No data message"
+    },
+    "pullToRefresh": "Pull to refresh",
+    "@pullToRefresh": {
+        "description": "Pull to refresh instruction"
+    },
+    "loadMore": "Load more",
+    "@loadMore": {
+        "description": "Load more button text"
+    },
+    "addToFavorites": "Add to Favorites",
+    "@addToFavorites": {
+        "description": "Add to favorites button text"
+    },
+    "removeFromFavorites": "Remove from Favorites",
+    "@removeFromFavorites": {
+        "description": "Remove from favorites button text"
+    },
+    "noFavorites": "No favorite movies yet",
+    "@noFavorites": {
+        "description": "No favorites message title"
+    },
+    "noFavoritesDesc": "You can add movies you like to favorites",
+    "@noFavoritesDesc": {
+        "description": "No favorites message description"
+    },
+    "profilePhoto": "Profile Photo",
+    "@profilePhoto": {
+        "description": "Profile photo label"
+    },
+    "changePhoto": "Change Photo",
+    "@changePhoto": {
+        "description": "Change photo button text"
+    },
+    "uploadPhoto": "Upload Photo",
+    "@uploadPhoto": {
+        "description": "Upload photo button text"
+    },
+    "camera": "Camera",
+    "@camera": {
+        "description": "Camera option text"
+    },
+    "gallery": "Gallery",
+    "@gallery": {
+        "description": "Gallery option text"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Settings menu item"
+    },
+    "language": "Language",
+    "@language": {
+        "description": "Language setting label"
+    },
+    "theme": "Theme",
+    "@theme": {
+        "description": "Theme setting label"
+    },
+    "notifications": "Notifications",
+    "@notifications": {
+        "description": "Notifications setting label"
+    },
+    "about": "About",
+    "@about": {
+        "description": "About menu item"
+    },
+    "limitedOffer": "Limited Offer",
+    "@limitedOffer": {
+        "description": "Limited offer title"
+    },
+    "specialOfferDesc": "Choose a token package to earn bonus and unlock new episodes!",
+    "@specialOfferDesc": {
+        "description": "Special offer description"
+    },
+    "getBonuses": "Your Bonuses",
+    "@getBonuses": {
+        "description": "Get bonuses section title"
+    },
+    "premiumAccount": "Premium Account",
+    "@premiumAccount": {
+        "description": "Premium account bonus"
+    },
+    "moreInteraction": "More Matches",
+    "@moreInteraction": {
+        "description": "More interaction bonus"
+    },
+    "unlockFeatures": "Featured",
+    "@unlockFeatures": {
+        "description": "Unlock features bonus"
+    },
+    "moreLikes": "More Likes",
+    "@moreLikes": {
+        "description": "More likes bonus"
+    },
+    "unlockEpisode": "Choose a token package to unlock",
+    "@unlockEpisode": {
+        "description": "Unlock episode instruction"
+    },
+    "viewAllTokens": "View All Tokens",
+    "@viewAllTokens": {
+        "description": "View all tokens button"
+    },
+    "weeklyOffers": "Per week",
+    "@weeklyOffers": {
+        "description": "Weekly offers text"
+    },
+    "continueButton": "Continue",
+    "@continueButton": {
+        "description": "Continue button text"
+    },
+    "success": "Success",
+    "@success": {
+        "description": "Success message"
+    },
+    "loginSuccess": "Login successful",
+    "@loginSuccess": {
+        "description": "Login success message"
+    },
+    "registerSuccess": "Registration successful",
+    "@registerSuccess": {
+        "description": "Registration success message"
+    },
+    "logoutSuccess": "Logout successful",
+    "@logoutSuccess": {
+        "description": "Logout success message"
+    },
+    "photoUploadSuccess": "Photo uploaded",
+    "@photoUploadSuccess": {
+        "description": "Photo upload success message"
+    },
+    "errorNetwork": "Check your internet connection",
+    "@errorNetwork": {
+        "description": "Network error message"
+    },
+    "errorServer": "Server error. Please try again later",
+    "@errorServer": {
+        "description": "Server error message"
+    },
+    "errorInvalidCredentials": "Invalid username or password",
+    "@errorInvalidCredentials": {
+        "description": "Invalid credentials error"
+    },
+    "errorUserExists": "This email is already registered",
+    "@errorUserExists": {
+        "description": "User already exists error"
+    },
+    "errorValidationEmail": "Please enter a valid email address",
+    "@errorValidationEmail": {
+        "description": "Email validation error"
+    },
+    "errorValidationPassword": "Password must be at least 6 characters",
+    "@errorValidationPassword": {
+        "description": "Password validation error"
+    },
+    "errorValidationName": "Name must be at least 2 characters",
+    "@errorValidationName": {
+        "description": "Name validation error"
+    },
+    "errorValidationPasswordMatch": "Passwords don't match",
+    "@errorValidationPasswordMatch": {
+        "description": "Password match validation error"
+    },
+    "errorPhotoUpload": "Error occurred while uploading photo",
+    "@errorPhotoUpload": {
+        "description": "Photo upload error"
+    },
+    "errorPhotoSize": "Photo size is too large",
+    "@errorPhotoSize": {
+        "description": "Photo size error"
+    },
+    "errorPhotoFormat": "Unsupported photo format",
+    "@errorPhotoFormat": {
+        "description": "Photo format error"
+    },
+    "sessionExpired": "Your session has expired. Please login again",
+    "@sessionExpired": {
+        "description": "Session expired message"
+    },
+    "unauthorized": "You don't have permission for this action",
+    "@unauthorized": {
+        "description": "Unauthorized access message"
+    },
+    "yes": "Yes",
+    "@yes": {
+        "description": "Yes button text"
+    },
+    "no": "No",
+    "@no": {
+        "description": "No button text"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK button text"
+    },
+    "save": "Save",
+    "@save": {
+        "description": "Save button text"
+    },
+    "delete": "Delete",
+    "@delete": {
+        "description": "Delete button text"
+    },
+    "edit": "Edit",
+    "@edit": {
+        "description": "Edit button text"
+    },
+    "share": "Share",
+    "@share": {
+        "description": "Share button text"
+    },
+    "search": "Search",
+    "@search": {
+        "description": "Search button text"
+    }
+}

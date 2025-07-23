@@ -1,0 +1,28 @@
+class AssetConstants {
+  // Images
+  static const String splash = 'assets/images/splash.png';
+  static const String logo = 'assets/images/app_logo.png';
+
+  // Icons - Auth
+  static const String iconEmail = 'assets/icons/email.svg';
+  static const String iconLock = 'assets/icons/unlock.svg';
+  static const String iconEyeOpen = 'assets/icons/eye_open.svg';
+  static const String iconEyeClosed = 'assets/icons/eye_closed.svg';
+  static const String iconUser = 'assets/icons/user.svg';
+
+  // Icons - Social Login
+  static const String iconGoogle = 'assets/icons/google.svg';
+  static const String iconApple = 'assets/icons/apple.svg';
+  static const String iconFacebook = 'assets/icons/facebook.svg';
+
+  // Icons - General
+  static const String iconHome = 'assets/icons/home.svg';
+  static const String iconProfile = 'assets/icons/profile.svg';
+  static const String iconFavorite = 'assets/icons/favorite.svg';
+
+  // Lottie Animations
+  static const String lottieLoading = 'assets/lottie/loading.json';
+
+  // Fonts
+  static const String fontEuclidCircularA = 'EuclidCircularA';
+}
