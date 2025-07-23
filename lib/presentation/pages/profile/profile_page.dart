@@ -332,7 +332,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: const EdgeInsets.only(
                     left: 40, // Updated padding
                     right: 40, // Updated padding
-                    bottom: 120,
+                    bottom: 70,
                   ),
                   child: GridView.builder(
                     controller: _scrollController,
