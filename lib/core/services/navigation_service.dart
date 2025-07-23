@@ -11,6 +11,34 @@ class NavigationService {
 
   BuildContext? get context => navigatorKey.currentContext;
 
+  Future<T?> pushBottomSheetOverlay<T>(Widget child) {
+    return showModalBottomSheet<T>(
+      context: context!,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      isDismissible: true,
+      enableDrag: true,
+      builder: (context) => GestureDetector(
+        onTap: () => Navigator.of(context).pop(),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(32),
+            color: Colors.transparent,
+          ),
+          child: GestureDetector(
+            onTap: () {}, // Prevent closing when tapping on content
+            child: DraggableScrollableSheet(
+              initialChildSize: 0.75,
+              minChildSize: 0.5,
+              maxChildSize: 0.9,
+              builder: (context, scrollController) => child,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   // Basic Navigation
   Future<T?> push<T>(String routeName, {Object? arguments}) {
     return context!.push<T>(routeName, extra: arguments);

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shartflix/core/extensions/localization_extension.dart';
+import 'package:shartflix/core/injection/injection_container.dart';
+import 'package:shartflix/core/services/navigation_service.dart';
 import 'package:shartflix/domain/entities/movie_entity.dart';
 import 'package:shartflix/presentation/widgets/home/limited_offer_bottom_sheet.dart';
 
@@ -125,11 +127,8 @@ class _ProfilePageState extends State<ProfilePage> {
             flex: 6,
             child: GestureDetector(
               onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  backgroundColor: Colors.transparent,
-                  isScrollControlled: true,
-                  builder: (context) => const LimitedOfferBottomSheet(),
+                sl<NavigationService>().pushBottomSheetOverlay(
+                  const LimitedOfferBottomSheet(),
                 );
               },
               child: Container(

@@ -23,6 +23,14 @@ class AssetConstants {
   static const String iconOffer = 'assets/icons/offer.svg';
   static const String iconLogo = 'assets/icons/logo.svg';
 
+  // Offer
+  static const String offerCircle = 'assets/icons/offer_circle.svg';
+  static const String offerDiamond = 'assets/icons/offer_diamond.png';
+  static const String offerMultipleHearts =
+      'assets/icons/offer_multiple_hearts.png';
+  static const String offerMushroom = 'assets/icons/offer_mushroom.png';
+  static const String offerHeart = 'assets/icons/offer_heart.png';
+
   // Lottie Animations
   static const String lottieLoading = 'assets/lottie/loading.json';
 
