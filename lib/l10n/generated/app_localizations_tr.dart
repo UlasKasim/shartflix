@@ -280,4 +280,67 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get search => 'Ara';
+
+  @override
+  String get profileDetail => 'Profil Detayı';
+
+  @override
+  String get moviesILike => 'Beğendiğim Filmler';
+
+  @override
+  String get noFavoriteMovies => 'Henüz beğendiğiniz film yok';
+
+  @override
+  String get moviesCouldNotLoaded => 'Filmler yüklenemedi';
+
+  @override
+  String get more => 'Daha Fazlası';
+
+  @override
+  String get description => 'Açıklama';
+
+  @override
+  String get movieDetails => 'Film Detayları';
+
+  @override
+  String get year => 'Yıl';
+
+  @override
+  String get genre => 'Tür';
+
+  @override
+  String get runtime => 'Süre';
+
+  @override
+  String get rated => 'Derecelendirme';
+
+  @override
+  String get country => 'Ülke';
+
+  @override
+  String get released => 'Yayınlanma';
+
+  @override
+  String get castAndCrew => 'Oyuncular ve Ekip';
+
+  @override
+  String get director => 'Yönetmen';
+
+  @override
+  String get writer => 'Yazar';
+
+  @override
+  String get cast => 'Oyuncular';
+
+  @override
+  String get ratingsAndAwards => 'Puanlar ve Ödüller';
+
+  @override
+  String get imdbRating => 'IMDb Puanı';
+
+  @override
+  String get metascore => 'Metascore';
+
+  @override
+  String get awards => 'Ödüller';
 }

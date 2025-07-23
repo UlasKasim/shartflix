@@ -11,12 +11,20 @@ import '../pages/home/main_page.dart';
 import '../pages/home/home_page.dart';
 import '../pages/profile/profile_page.dart';
 
+class RouteNames {
+  static const String login = 'login';
+  static const String register = 'register';
+  static const String home = 'home';
+  static const String profile = 'profile';
+  static const String favorites = 'favorites';
+}
+
 class AppRouter {
-  static const String login = '/login';
-  static const String register = '/register';
-  static const String home = '/home';
-  static const String profile = '/profile';
-  static const String favorites = '/favorites';
+  static const String login = '/${RouteNames.login}';
+  static const String register = '/${RouteNames.register}';
+  static const String home = '/${RouteNames.home}';
+  static const String profile = '/${RouteNames.profile}';
+  static const String favorites = '/${RouteNames.favorites}';
 
   static final GoRouter router = GoRouter(
     initialLocation: login,
@@ -116,13 +124,4 @@ class AppRouter {
     // If auth state is loading or unknown, stay on current page
     return null;
   }
-}
-
-// Route names for easy access
-class RouteNames {
-  static const String login = 'login';
-  static const String register = 'register';
-  static const String home = 'home';
-  static const String profile = 'profile';
-  static const String favorites = 'favorites';
 }

@@ -99,10 +99,8 @@ Future<void> main() async {
     LoggerService().i('✅ Sinflix initialized successfully');
   } catch (e, stackTrace) {
     LoggerService().f('❌ Failed to initialize Sinflix', e, stackTrace);
-    // Still run the app even if some initialization fails
   }
 
-  // Kısa bir bekleme sonrası splash'i kaldır
   await Future.delayed(const Duration(milliseconds: 500));
   FlutterNativeSplash.remove();
 

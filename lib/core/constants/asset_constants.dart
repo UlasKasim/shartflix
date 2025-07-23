@@ -19,10 +19,14 @@ class AssetConstants {
   static const String iconHome = 'assets/icons/home.svg';
   static const String iconProfile = 'assets/icons/profile.svg';
   static const String iconFavorite = 'assets/icons/favorite.svg';
+  static const String iconArrowLeft = 'assets/icons/left.svg';
+  static const String iconOffer = 'assets/icons/offer.svg';
+  static const String iconLogo = 'assets/icons/logo.svg';
 
   // Lottie Animations
   static const String lottieLoading = 'assets/lottie/loading.json';
 
   // Fonts
   static const String fontEuclidCircularA = 'EuclidCircularA';
+  static const String montserrat = 'Montserrat';
 }

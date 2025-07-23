@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shartflix/core/constants/asset_constants.dart';
 
 class AppTheme {
   // Colors - Netflix-inspired dark theme for Sinflix
@@ -46,7 +47,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      fontFamily: 'EuclidCircularA',
+      fontFamily: AssetConstants.fontEuclidCircularA,
 
       // Color Scheme
       colorScheme: const ColorScheme.dark(
@@ -73,7 +74,7 @@ class AppTheme {
           color: textPrimary,
           fontSize: 20,
           fontWeight: FontWeight.w600,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
         iconTheme: IconThemeData(color: textPrimary),
         systemOverlayStyle: SystemUiOverlayStyle(
@@ -114,7 +115,7 @@ class AppTheme {
           textStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            fontFamily: 'EuclidCircularA',
+            fontFamily: AssetConstants.fontEuclidCircularA,
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         ),
@@ -131,7 +132,7 @@ class AppTheme {
           textStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            fontFamily: 'EuclidCircularA',
+            fontFamily: AssetConstants.fontEuclidCircularA,
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         ),
@@ -144,7 +145,7 @@ class AppTheme {
           textStyle: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            fontFamily: 'EuclidCircularA',
+            fontFamily: AssetConstants.fontEuclidCircularA,
           ),
         ),
       ),
@@ -177,27 +178,26 @@ class AppTheme {
           color: textPrimary,
           fontSize: 32,
           fontWeight: FontWeight.bold,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
         displayMedium: TextStyle(
           color: textPrimary,
           fontSize: 28,
           fontWeight: FontWeight.bold,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
         displaySmall: TextStyle(
           color: textPrimary,
           fontSize: 24,
           fontWeight: FontWeight.w600,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
         // Login Design Specific Styles
         headlineLarge: TextStyle(
-          // "Merhabalar" için
           color: textPrimary,
           fontSize: 18,
           fontWeight: FontWeight.w600,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
           height: 1.0,
         ),
         headlineMedium: TextStyle(
@@ -205,7 +205,7 @@ class AppTheme {
           color: textPrimary,
           fontSize: 15,
           fontWeight: FontWeight.w500,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
           height: 1.0,
         ),
         headlineSmall: TextStyle(
@@ -213,46 +213,46 @@ class AppTheme {
           color: textPrimary,
           fontSize: 13,
           fontWeight: FontWeight.w400,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
           height: 1.0,
         ),
         titleLarge: TextStyle(
           color: textPrimary,
           fontSize: 16,
           fontWeight: FontWeight.w600,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
         titleMedium: TextStyle(
           color: textPrimary,
           fontSize: 14,
           fontWeight: FontWeight.w500,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
         titleSmall: TextStyle(
           // Hint text ve küçük text'ler için
           color: textSecondary,
           fontSize: 12,
           fontWeight: FontWeight.w400,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
           height: 1.5,
         ),
         bodyLarge: TextStyle(
           color: textPrimary,
           fontSize: 16,
           fontWeight: FontWeight.normal,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
         bodyMedium: TextStyle(
           color: textSecondary,
           fontSize: 14,
           fontWeight: FontWeight.normal,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
         bodySmall: TextStyle(
           color: textHint,
           fontSize: 12,
           fontWeight: FontWeight.normal,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
       ),
 
@@ -278,7 +278,7 @@ class AppTheme {
         backgroundColor: cardDark,
         contentTextStyle: const TextStyle(
           color: textPrimary,
-          fontFamily: 'EuclidCircularA',
+          fontFamily: AssetConstants.fontEuclidCircularA,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
@@ -293,7 +293,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      fontFamily: 'EuclidCircularA',
+      fontFamily: AssetConstants.fontEuclidCircularA,
       colorScheme: const ColorScheme.light(
         primary: primaryRed,
         primaryContainer: lightRed,

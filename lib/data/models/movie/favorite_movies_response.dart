@@ -6,6 +6,7 @@ part 'favorite_movies_response.g.dart';
 
 @JsonSerializable()
 class FavoriteMoviesResponse {
+  @JsonKey(name: 'data')
   final List<MovieModel> movies;
 
   const FavoriteMoviesResponse({
@@ -13,9 +14,7 @@ class FavoriteMoviesResponse {
   });
 
   factory FavoriteMoviesResponse.fromJson(Map<String, dynamic> json) =>
-      _$FavoriteMoviesResponseFromJson(json['data'] as Map<String, dynamic>);
+      _$FavoriteMoviesResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        'data': _$FavoriteMoviesResponseToJson(this),
-      };
+  Map<String, dynamic> toJson() => _$FavoriteMoviesResponseToJson(this);
 }

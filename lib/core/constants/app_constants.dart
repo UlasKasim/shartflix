@@ -8,9 +8,7 @@ class AppConstants {
 
   // Storage Keys
   static const String accessTokenKey = 'access_token';
-  static const String refreshTokenKey = 'refresh_token';
   static const String userDataKey = 'user_data';
-  static const String languageKey = 'language';
   static const String themeKey = 'theme';
 
   // Pagination

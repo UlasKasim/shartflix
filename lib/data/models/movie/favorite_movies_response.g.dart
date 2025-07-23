@@ -9,7 +9,7 @@ part of 'favorite_movies_response.dart';
 FavoriteMoviesResponse _$FavoriteMoviesResponseFromJson(
         Map<String, dynamic> json) =>
     FavoriteMoviesResponse(
-      movies: (json['movies'] as List<dynamic>)
+      movies: (json['data'] as List<dynamic>)
           .map((e) => MovieModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,5 +17,5 @@ FavoriteMoviesResponse _$FavoriteMoviesResponseFromJson(
 Map<String, dynamic> _$FavoriteMoviesResponseToJson(
         FavoriteMoviesResponse instance) =>
     <String, dynamic>{
-      'movies': instance.movies,
+      'data': instance.movies,
     };

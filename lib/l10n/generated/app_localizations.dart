@@ -640,6 +640,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search'**
   String get search;
+
+  /// Profile detail text
+  ///
+  /// In en, this message translates to:
+  /// **'Profile Detail'**
+  String get profileDetail;
+
+  /// Movies i like text
+  ///
+  /// In en, this message translates to:
+  /// **'Movies I Like'**
+  String get moviesILike;
+
+  /// You don't have any favorite movies yet text
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have any favorite movies yet.'**
+  String get noFavoriteMovies;
+
+  /// Movies could not loaded text
+  ///
+  /// In en, this message translates to:
+  /// **'Movies could not loaded'**
+  String get moviesCouldNotLoaded;
+
+  /// Text shown to indicate more content is available, typically used as a link to view additional details.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get more;
+
+  /// Label for the movie description section in the movie details bottom sheet.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// Label for the section containing detailed movie information such as year, genre, and runtime.
+  ///
+  /// In en, this message translates to:
+  /// **'Movie Details'**
+  String get movieDetails;
+
+  /// Label for the movie release year in the movie details section.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year;
+
+  /// Label for the movie genre in the movie details section.
+  ///
+  /// In en, this message translates to:
+  /// **'Genre'**
+  String get genre;
+
+  /// Label for the movie duration in the movie details section.
+  ///
+  /// In en, this message translates to:
+  /// **'Runtime'**
+  String get runtime;
+
+  /// Label for the movie rating (e.g., PG-13) in the movie details section.
+  ///
+  /// In en, this message translates to:
+  /// **'Rated'**
+  String get rated;
+
+  /// Label for the movie's country of origin in the movie details section.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get country;
+
+  /// Label for the movie release date in the movie details section.
+  ///
+  /// In en, this message translates to:
+  /// **'Released'**
+  String get released;
+
+  /// Label for the section listing the movie's director, writer, and actors.
+  ///
+  /// In en, this message translates to:
+  /// **'Cast & Crew'**
+  String get castAndCrew;
+
+  /// Label for the movie director in the cast and crew section.
+  ///
+  /// In en, this message translates to:
+  /// **'Director'**
+  String get director;
+
+  /// Label for the movie writer in the cast and crew section.
+  ///
+  /// In en, this message translates to:
+  /// **'Writer'**
+  String get writer;
+
+  /// Label for the movie actors in the cast and crew section.
+  ///
+  /// In en, this message translates to:
+  /// **'Cast'**
+  String get cast;
+
+  /// Label for the section containing movie ratings and awards information.
+  ///
+  /// In en, this message translates to:
+  /// **'Ratings & Awards'**
+  String get ratingsAndAwards;
+
+  /// Label for the IMDb rating of the movie in the ratings and awards section.
+  ///
+  /// In en, this message translates to:
+  /// **'IMDb Rating'**
+  String get imdbRating;
+
+  /// Label for the Metascore rating of the movie in the ratings and awards section.
+  ///
+  /// In en, this message translates to:
+  /// **'Metascore'**
+  String get metascore;
+
+  /// Label for the awards received by the movie in the ratings and awards section.
+  ///
+  /// In en, this message translates to:
+  /// **'Awards'**
+  String get awards;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

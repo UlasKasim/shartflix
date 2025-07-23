@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shartflix/presentation/blocs/common/navigation_cubit.dart';
 
 import '../../domain/usecases/auth/get_user_profile_usecase.dart';
 import '../../domain/usecases/auth/upload_photo_usecase.dart';
@@ -84,4 +85,5 @@ Future<void> init() async {
   sl.registerFactory(() => AuthBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => MovieBloc(sl(), sl(), sl()));
   sl.registerFactory(() => ProfileBloc(sl()));
+  sl.registerFactory(() => NavigationCubit());
 }

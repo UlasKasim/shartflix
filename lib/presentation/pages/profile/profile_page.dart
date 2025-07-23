@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shartflix/core/extensions/localization_extension.dart';
+import 'package:shartflix/domain/entities/movie_entity.dart';
+import 'package:shartflix/presentation/widgets/home/limited_offer_bottom_sheet.dart';
 
-import '../../../core/extensions/localization_extension.dart';
-import '../../../core/services/navigation_service.dart';
-import '../../../core/injection/injection_container.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../core/constants/asset_constants.dart';
 import '../../blocs/auth/auth_bloc.dart';
-import '../../blocs/profile/profile_bloc.dart';
-import '../../widgets/common/custom_button.dart';
+import '../../blocs/movie/movie_bloc.dart';
+import '../../widgets/home/custom_cached_image.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -19,306 +19,450 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final ImagePicker _imagePicker = ImagePicker();
+  final ScrollController _scrollController = ScrollController();
 
-  void _onPhotoChangePressed() async {
-    final result = await showModalBottomSheet<ImageSource>(
-      context: context,
-      backgroundColor: Colors.transparent,
-      builder: (context) => Container(
-        decoration: const BoxDecoration(
-          color: AppTheme.surfaceDark,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-        ),
-        padding: const EdgeInsets.all(24),
+  @override
+  void initState() {
+    super.initState();
+    _loadFavoriteMovies();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _loadFavoriteMovies() {
+    // Load favorite movies using the dedicated service
+    context.read<MovieBloc>().add(MovieFavoritesLoadRequested());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppTheme.backgroundDark,
+      body: SafeArea(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              context.l10n.changePhoto,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            // Header
+            _buildHeader(context),
+
             const SizedBox(height: 24),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomButton(
-                    onPressed: () =>
-                        Navigator.of(context).pop(ImageSource.camera),
-                    text: context.l10n.camera,
-                    icon: Icons.camera_alt_outlined,
-                    variant: ButtonVariant.outlined,
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: CustomButton(
-                    onPressed: () =>
-                        Navigator.of(context).pop(ImageSource.gallery),
-                    text: context.l10n.gallery,
-                    icon: Icons.photo_library_outlined,
-                    variant: ButtonVariant.outlined,
-                  ),
-                ),
-              ],
+
+            // Profile Info
+            BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, authState) {
+                return _buildProfileInfo(context, authState);
+              },
+            ),
+
+            const SizedBox(height: 32),
+
+            // Favorite Movies Section
+            Expanded(
+              child: _buildFavoriteMoviesSection(context),
             ),
           ],
         ),
       ),
     );
-
-    if (result != null) {
-      final image = await _imagePicker.pickImage(source: result);
-      if (image != null) {
-        context.read<ProfileBloc>().add(
-              ProfilePhotoUploadRequested(filePath: image.path),
-            );
-      }
-    }
   }
 
-  void _onLogoutPressed() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(context.l10n.logout),
-        content: const Text('Are you sure you want to logout?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text(context.l10n.cancel),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              context.read<AuthBloc>().add(AuthLogoutRequested());
-            },
-            style: TextButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.error,
+  Widget _buildHeader(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 16),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 6,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.1),
+                    border: Border.all(
+                      color: Colors.white.withValues(alpha: 0.2),
+                      width: 1,
+                    ),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      AssetConstants.iconArrowLeft,
+                      width: 15,
+                      height: 12,
+                      colorFilter: const ColorFilter.mode(
+                        Colors.white,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
-            child: Text(context.l10n.logout),
+          ),
+          Expanded(
+            flex: 5,
+            child: Center(
+              child: Text(
+                context.l10n.profileDetail,
+                style: const TextStyle(
+                  fontFamily: AssetConstants.fontEuclidCircularA,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                  height: 1.0,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 6,
+            child: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  isScrollControlled: true,
+                  builder: (context) => const LimitedOfferBottomSheet(),
+                );
+              },
+              child: Container(
+                height: 33,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFE50914),
+                  borderRadius: BorderRadius.circular(53),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(width: 10),
+                    SvgPicture.asset(
+                      AssetConstants.iconOffer,
+                      width: 18,
+                      height: 18,
+                      colorFilter: const ColorFilter.mode(
+                        Colors.white,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      context.l10n.limitedOffer,
+                      style: const TextStyle(
+                        fontFamily: AssetConstants.montserrat,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        height: 1.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(context.l10n.profile),
-        centerTitle: true,
-      ),
-      body: BlocListener<ProfileBloc, ProfileState>(
-        listener: (context, state) {
-          if (state is ProfilePhotoUploadSuccess) {
-            sl<NavigationService>().showSnackBar(
-              context.l10n.photoUploadSuccess,
-              type: SnackBarType.success,
-            );
-            // Refresh user profile
-            context.read<AuthBloc>().add(AuthUserProfileRequested());
-          } else if (state is ProfilePhotoUploadError) {
-            sl<NavigationService>().showSnackBar(
-              state.message,
-              type: SnackBarType.error,
-            );
-          }
-        },
-        child: BlocBuilder<AuthBloc, AuthState>(
-          builder: (context, authState) {
-            if (authState is! AuthAuthenticated) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-
-            final user = authState.user;
-
-            return SingleChildScrollView(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                children: [
-                  // Profile Photo Section
-                  BlocBuilder<ProfileBloc, ProfileState>(
-                    builder: (context, profileState) {
-                      final isUploading = profileState is ProfilePhotoUploading;
-
-                      return Stack(
-                        children: [
-                          Container(
-                            width: 120,
-                            height: 120,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              gradient: AppTheme.primaryGradient,
-                              boxShadow: [AppShadows.elevatedShadow.first],
-                            ),
-                            child: ClipOval(
-                              child: user.photoUrl != null
-                                  ? CachedNetworkImage(
-                                      imageUrl: user.photoUrl!,
-                                      fit: BoxFit.cover,
-                                      placeholder: (context, url) =>
-                                          const Center(
-                                        child: CircularProgressIndicator(),
-                                      ),
-                                      errorWidget: (context, url, error) =>
-                                          const Icon(
-                                        Icons.person,
-                                        size: 60,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  : const Icon(
-                                      Icons.person,
-                                      size: 60,
-                                      color: Colors.white,
-                                    ),
-                            ),
-                          ),
-                          if (isUploading)
-                            Container(
-                              width: 120,
-                              height: 120,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.black..withValues(alpha: 0.5),
-                              ),
-                              child: const Center(
-                                child: CircularProgressIndicator(
-                                    color: Colors.white),
-                              ),
-                            ),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: GestureDetector(
-                              onTap: isUploading ? null : _onPhotoChangePressed,
-                              child: Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: AppTheme.primaryRed,
-                                  shape: BoxShape.circle,
-                                  border:
-                                      Border.all(color: Colors.white, width: 2),
-                                ),
-                                child: const Icon(
-                                  Icons.camera_alt,
-                                  color: Colors.white,
-                                  size: 16,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
+  Widget _buildProfileInfo(BuildContext context, AuthState authState) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 35), // Updated padding
+      child: Row(
+        children: [
+          // Avatar
+          Container(
+            width: 62,
+            height: 62,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            child: ClipOval(
+              child: CustomCachedImage(
+                imageUrl: authState is AuthAuthenticated
+                    ? (authState.user.photoUrl ?? '')
+                    : '',
+                width: 62,
+                height: 62,
+                fit: BoxFit.cover,
+                errorWidget: Container(
+                  width: 62,
+                  height: 62,
+                  decoration: const BoxDecoration(
+                    color: AppTheme.cardDark,
+                    shape: BoxShape.circle,
                   ),
-
-                  const SizedBox(height: 24),
-
-                  // User Info
-                  Text(
-                    user.name ?? "",
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                  child: const Icon(
+                    Icons.person,
+                    color: Colors.white54,
+                    size: 32,
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    user.email ?? "",
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: AppTheme.textSecondary,
-                        ),
-                  ),
-
-                  const SizedBox(height: 40),
-
-                  // Profile Options
-                  _buildProfileOption(
-                    context,
-                    Icons.favorite_outline,
-                    context.l10n.favorites,
-                    () {
-                      // TODO: Navigate to favorites
-                    },
-                  ),
-
-                  _buildProfileOption(
-                    context,
-                    Icons.settings_outlined,
-                    context.l10n.settings,
-                    () {
-                      // TODO: Navigate to settings
-                    },
-                  ),
-
-                  _buildProfileOption(
-                    context,
-                    Icons.language_outlined,
-                    context.l10n.language,
-                    () {
-                      // TODO: Show language selector
-                    },
-                  ),
-
-                  _buildProfileOption(
-                    context,
-                    Icons.info_outline,
-                    context.l10n.about,
-                    () {
-                      // TODO: Show about dialog
-                    },
-                  ),
-
-                  const SizedBox(height: 40),
-
-                  // Logout Button
-                  CustomButton(
-                    onPressed: _onLogoutPressed,
-                    text: context.l10n.logout,
-                    icon: Icons.logout,
-                    backgroundColor: Theme.of(context).colorScheme.error,
-                    width: double.infinity,
-                  ),
-                ],
+                ),
               ),
-            );
-          },
-        ),
+            ),
+          ),
+
+          const SizedBox(width: 16),
+
+          // User Info from AuthBloc
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  authState is AuthAuthenticated
+                      ? (authState.user.name ?? authState.user.email ?? 'User')
+                      : '',
+                  style: const TextStyle(
+                    fontFamily: AssetConstants.fontEuclidCircularA,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    height: 1.0,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  authState is AuthAuthenticated
+                      ? 'ID: ${authState.user.id?.substring(0, 6) ?? 'N/A'}'
+                      : 'ID: N/A',
+                  style: const TextStyle(
+                    fontFamily: AssetConstants.fontEuclidCircularA,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: AppTheme.textSecondary,
+                    height: 1.5,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Add Photo Button
+          GestureDetector(
+            onTap: () {
+              // Handle photo upload
+              _handlePhotoUpload();
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              decoration: BoxDecoration(
+                color: const Color(0xFFE50914),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text(
+                context.l10n.uploadPhoto,
+                style: const TextStyle(
+                  fontFamily: AssetConstants.fontEuclidCircularA,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  height: 1.0,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildProfileOption(
-    BuildContext context,
-    IconData icon,
-    String title,
-    VoidCallback onTap,
-  ) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      child: ListTile(
-        leading: Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: AppTheme.primaryRed..withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(8),
+  void _handlePhotoUpload() {
+    // TODO: Implement photo upload
+  }
+
+  Widget _buildFavoriteMoviesSection(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Section Title
+        Padding(
+          padding:
+              const EdgeInsets.symmetric(horizontal: 40), // Updated padding
+          child: Text(
+            context.l10n.moviesILike,
+            style: const TextStyle(
+              fontFamily: AssetConstants.fontEuclidCircularA,
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+              height: 1.0,
+            ),
           ),
-          child: Icon(icon, color: AppTheme.primaryRed),
         ),
-        title: Text(
-          title,
-          style: Theme.of(context).textTheme.titleMedium,
+
+        const SizedBox(height: 24),
+
+        // Movies Grid
+        Expanded(
+          child: BlocBuilder<MovieBloc, MovieState>(
+            builder: (context, state) {
+              if (state is MovieFavoritesLoaded) {
+                if (state.favorites.isEmpty) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.favorite_border,
+                          size: 64,
+                          color: Colors.white54,
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          context.l10n.noFavoriteMovies,
+                          style: const TextStyle(
+                            color: AppTheme.textSecondary,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                return Padding(
+                  padding: const EdgeInsets.only(
+                    left: 40, // Updated padding
+                    right: 40, // Updated padding
+                    bottom: 120,
+                  ),
+                  child: GridView.builder(
+                    controller: _scrollController,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.55,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                    ),
+                    itemCount: state.favorites.length,
+                    itemBuilder: (context, index) {
+                      final movie = state.favorites[index];
+                      return _buildMovieCard(movie);
+                    },
+                  ),
+                );
+              }
+
+              if (state is MovieFavoritesLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              if (state is MovieFavoritesError) {
+                return Center(
+                  child: Text(
+                    state.message,
+                    style: const TextStyle(
+                      color: AppTheme.textSecondary,
+                      fontSize: 16,
+                    ),
+                  ),
+                );
+              }
+
+              return Center(
+                child: Text(
+                  context.l10n.moviesCouldNotLoaded,
+                  style: const TextStyle(
+                    color: AppTheme.textSecondary,
+                    fontSize: 16,
+                  ),
+                ),
+              );
+            },
+          ),
         ),
-        trailing: const Icon(Icons.chevron_right),
-        onTap: onTap,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+      ],
+    );
+  }
+
+  Widget _buildMovieCard(MovieEntity movie) {
+    return GestureDetector(
+      onTap: () {
+        // Navigate to movie details or open modal
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.transparent,
         ),
-        tileColor: AppTheme.cardDark,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Movie Poster with 0.71 aspect ratio
+            AspectRatio(
+              aspectRatio: 0.71,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: CustomCachedImage(
+                  imageUrl: movie.posterUrl,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  errorWidget: FallbackImage(
+                    width: double.infinity,
+                    icon: Icons.movie_outlined,
+                    text: movie.title,
+                  ),
+                ),
+              ),
+            ),
+
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.only(top: 16),
+              decoration: const BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(2),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Movie Title
+                  Text(
+                    movie.title,
+                    style: const TextStyle(
+                      fontFamily: AssetConstants.fontEuclidCircularA,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                      height: 1.0,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+
+                  const SizedBox(height: 2),
+
+                  // Producer/Studio
+                  Text(
+                    movie.director ?? '',
+                    style: const TextStyle(
+                      fontFamily: AssetConstants.fontEuclidCircularA,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: AppTheme.textSecondary,
+                      height: 1.5,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

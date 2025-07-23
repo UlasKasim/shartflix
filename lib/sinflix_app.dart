@@ -6,6 +6,7 @@ import 'core/injection/injection_container.dart';
 import 'core/theme/app_theme.dart';
 import 'l10n/generated/app_localizations.dart';
 import 'presentation/blocs/auth/auth_bloc.dart';
+import 'presentation/blocs/common/navigation_cubit.dart';
 import 'presentation/blocs/movie/movie_bloc.dart';
 import 'presentation/blocs/profile/profile_bloc.dart';
 import 'presentation/routes/app_router.dart';
@@ -17,15 +18,10 @@ class SinflixApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AuthBloc>(
-          create: (_) => sl<AuthBloc>(),
-        ),
-        BlocProvider<MovieBloc>(
-          create: (_) => sl<MovieBloc>(),
-        ),
-        BlocProvider<ProfileBloc>(
-          create: (_) => sl<ProfileBloc>(),
-        ),
+        BlocProvider<AuthBloc>(create: (_) => sl<AuthBloc>()),
+        BlocProvider<MovieBloc>(create: (_) => sl<MovieBloc>()),
+        BlocProvider<ProfileBloc>(create: (_) => sl<ProfileBloc>()),
+        BlocProvider<NavigationCubit>(create: (_) => NavigationCubit()),
       ],
       child: MaterialApp.router(
         title: 'Sinflix',
@@ -41,6 +37,8 @@ class SinflixApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.supportedLocales,
+        locale: AppLocalizations.supportedLocales
+            .firstWhere((l) => l.languageCode == "tr"),
         // Navigation
         routerConfig: AppRouter.router,
       ),

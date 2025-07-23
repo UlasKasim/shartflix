@@ -23,11 +23,6 @@ class ValidationRegExp {
     r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
   );
 
-  // Password validation - at least one letter and one number
-  static final RegExp strongPassword = RegExp(
-    r'^(?=.*[A-Za-z])(?=.*\d)',
-  );
-
   // Name validation - only letters, spaces, and common characters
   static final RegExp name = RegExp(
     r'^[a-zA-ZğüşıöçĞÜŞİÖÇ\s\-\.]+$',
@@ -55,13 +50,6 @@ class ValidationHelper {
   static bool isValidEmail(String? email) {
     if (email == null || email.isEmpty) return false;
     return ValidationRegExp.email.hasMatch(email.trim());
-  }
-
-  // Password strength validation
-  static bool isStrongPassword(String? password) {
-    if (password == null || password.isEmpty) return false;
-    return password.length >= ValidationConstants.minPasswordLength &&
-        ValidationRegExp.strongPassword.hasMatch(password);
   }
 
   // Name validation

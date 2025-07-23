@@ -50,14 +50,6 @@ class StorageService {
     return await getSecureString(AppConstants.accessTokenKey);
   }
 
-  Future<void> setRefreshToken(String token) async {
-    await setSecureString(AppConstants.refreshTokenKey, token);
-  }
-
-  Future<String?> getRefreshToken() async {
-    return await getSecureString(AppConstants.refreshTokenKey);
-  }
-
   // General Storage (for app preferences)
   Future<void> setString(String key, String value) async {
     await _generalBox.put(key, value);

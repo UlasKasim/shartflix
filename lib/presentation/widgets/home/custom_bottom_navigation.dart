@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shartflix/presentation/blocs/common/navigation_cubit.dart';
 
 import '../../../core/theme/app_theme.dart';
 import '../../../core/constants/asset_constants.dart';
@@ -12,38 +14,46 @@ class CustomBottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Current route'u al
-    final String currentRoute = GoRouterState.of(context).uri.toString();
-    final bool isHome = currentRoute.contains('/home') || currentRoute == '/';
-    final bool isProfile = currentRoute.contains('/profile');
+    return BlocBuilder<NavigationCubit, NavigationPage>(
+      builder: (context, currentPage) {
+        final bool isHome = currentPage == NavigationPage.home;
+        final bool isProfile = currentPage == NavigationPage.profile;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _buildNavButton(
-          context: context,
-          iconPath: AssetConstants.iconHome,
-          label: context.l10n.home,
-          isSelected: isHome,
-          onTap: () {
-            if (!isHome) {
-              context.goNamed(RouteNames.home);
-            }
-          },
-        ),
-        const SizedBox(width: 16),
-        _buildNavButton(
-          context: context,
-          iconPath: AssetConstants.iconProfile,
-          label: context.l10n.profile,
-          isSelected: isProfile,
-          onTap: () {
-            if (!isProfile) {
-              context.goNamed(RouteNames.profile);
-            }
-          },
-        ),
-      ],
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildNavButton(
+              context: context,
+              iconPath: AssetConstants.iconHome,
+              label: context.l10n.home,
+              isSelected: isHome,
+              onTap: () {
+                if (!isHome) {
+                  context
+                      .read<NavigationCubit>()
+                      .setCurrentPage(NavigationPage.home);
+                  context.goNamed(RouteNames.home);
+                }
+              },
+            ),
+            const SizedBox(width: 16),
+            _buildNavButton(
+              context: context,
+              iconPath: AssetConstants.iconProfile,
+              label: context.l10n.profile,
+              isSelected: isProfile,
+              onTap: () {
+                if (!isProfile) {
+                  context
+                      .read<NavigationCubit>()
+                      .setCurrentPage(NavigationPage.profile);
+                  context.goNamed(RouteNames.profile);
+                }
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -59,7 +69,7 @@ class CustomBottomNavigation extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.33,
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.2), // Saydam/%20 Beyaz
+          color: Colors.white.withValues(alpha: 0.2),
           width: 1,
         ),
         borderRadius: BorderRadius.circular(20),

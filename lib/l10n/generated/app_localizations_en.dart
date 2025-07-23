@@ -280,4 +280,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get search => 'Search';
+
+  @override
+  String get profileDetail => 'Profile Detail';
+
+  @override
+  String get moviesILike => 'Movies I Like';
+
+  @override
+  String get noFavoriteMovies => 'You don\'t have any favorite movies yet.';
+
+  @override
+  String get moviesCouldNotLoaded => 'Movies could not loaded';
+
+  @override
+  String get more => 'More';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get movieDetails => 'Movie Details';
+
+  @override
+  String get year => 'Year';
+
+  @override
+  String get genre => 'Genre';
+
+  @override
+  String get runtime => 'Runtime';
+
+  @override
+  String get rated => 'Rated';
+
+  @override
+  String get country => 'Country';
+
+  @override
+  String get released => 'Released';
+
+  @override
+  String get castAndCrew => 'Cast & Crew';
+
+  @override
+  String get director => 'Director';
+
+  @override
+  String get writer => 'Writer';
+
+  @override
+  String get cast => 'Cast';
+
+  @override
+  String get ratingsAndAwards => 'Ratings & Awards';
+
+  @override
+  String get imdbRating => 'IMDb Rating';
+
+  @override
+  String get metascore => 'Metascore';
+
+  @override
+  String get awards => 'Awards';
 }
