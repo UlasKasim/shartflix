@@ -104,7 +104,7 @@ class ProfileInfoSection extends StatelessWidget {
     return PrimaryButton.small(
       text: context.l10n.uploadPhoto,
       onPressed: () {
-        context.goNamed(RouteNames.photoUpload);
+        context.pushNamed(RouteNames.photoUpload);
       },
     );
   }

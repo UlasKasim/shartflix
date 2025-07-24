@@ -3,8 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shartflix/core/injection/injection_container.dart';
 import 'package:shartflix/core/services/navigation_service.dart';
-import 'package:shartflix/presentation/blocs/blocs.dart';
-import 'package:shartflix/presentation/pages/pages.dart';
+
+import '../blocs/auth/auth_bloc.dart';
+import '../pages/auth/login_page.dart';
+import '../pages/auth/register_page.dart';
+import '../pages/home/main_page.dart';
+import '../pages/home/home_page.dart';
+import '../pages/profile/profile_page.dart';
+import '../pages/profile/photo_upload_page.dart';
 
 class RouteNames {
   static const String login = 'login';
@@ -37,9 +43,7 @@ class AppRouter {
           child: const LoginPage(),
           transitionDuration: const Duration(milliseconds: 400),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            // Login -> Register: slide left to right
-            // Register -> Login: slide right to left
-            const begin = Offset(-1.0, 0.0); // Geldiği yer (sol)
+            const begin = Offset(-1.0, 0.0);
             const end = Offset.zero;
             const curve = Curves.easeInOutCubic;
 
@@ -61,32 +65,6 @@ class AppRouter {
           key: state.pageKey,
           child: const RegisterPage(),
           transitionDuration: const Duration(milliseconds: 400),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            // Register animasyonu (sağdan gelen)
-            const begin = Offset(1.0, 0.0); // Geldiği yer (sağ)
-            const end = Offset.zero;
-            const curve = Curves.easeInOutCubic;
-
-            var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve),
-            );
-
-            return SlideTransition(
-              position: animation.drive(tween),
-              child: child,
-            );
-          },
-        ),
-      ),
-
-      // Photo Upload Route
-      GoRoute(
-        path: photoUpload,
-        name: 'photo_upload',
-        pageBuilder: (context, state) => CustomTransitionPage<void>(
-          key: state.pageKey,
-          child: const PhotoUploadPage(),
-          transitionDuration: const Duration(milliseconds: 300),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             const begin = Offset(1.0, 0.0);
             const end = Offset.zero;
@@ -119,6 +97,31 @@ class AppRouter {
             builder: (context, state) => const ProfilePage(),
           ),
         ],
+      ),
+
+      // Photo Upload Route (without bottom navigation)
+      GoRoute(
+        path: photoUpload,
+        name: 'photo_upload',
+        pageBuilder: (context, state) => CustomTransitionPage<void>(
+          key: state.pageKey,
+          child: const PhotoUploadPage(),
+          transitionDuration: const Duration(milliseconds: 300),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const begin = Offset(1.0, 0.0);
+            const end = Offset.zero;
+            const curve = Curves.easeInOutCubic;
+
+            var tween = Tween(begin: begin, end: end).chain(
+              CurveTween(curve: curve),
+            );
+
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        ),
       ),
     ],
   );

@@ -42,6 +42,7 @@ class _PhotoUploadPageState extends State<PhotoUploadPage> {
         _onImageSelected(image.path);
       }
     } catch (e) {
+      // Check if widget is still mounted after async operation
       if (mounted) {
         sl<NavigationService>().showSnackBar(
           context.l10n.errorImagePicker,
@@ -70,7 +71,7 @@ class _PhotoUploadPageState extends State<PhotoUploadPage> {
               context.l10n.photoUploadSuccess,
               type: SnackBarType.success,
             );
-            context.pop(); // Return to profile page
+            context.pop(); // Now this will work because we used pushNamed
           } else if (state is ProfilePhotoUploadError) {
             sl<NavigationService>().showSnackBar(
               state.message,
@@ -89,7 +90,7 @@ class _PhotoUploadPageState extends State<PhotoUploadPage> {
                   onBackPressed: () => context.pop(),
                 ),
 
-                const Spacer(flex: 2),
+                const Spacer(flex: 1),
 
                 // Content
                 Column(

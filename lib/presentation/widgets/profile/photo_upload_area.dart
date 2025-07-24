@@ -17,13 +17,13 @@ class PhotoUploadArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final containerSize = screenWidth * 0.33; // %33 of screen width
+    final containerSize = screenWidth * 0.4;
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: containerSize,
-        height: 165, // Fixed height as per design
+        height: containerSize,
         decoration: BoxDecoration(
           color: Colors.white.withValues(alpha: 0.1),
           border: Border.all(

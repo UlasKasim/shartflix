@@ -120,16 +120,8 @@ class PrimaryButton extends StatelessWidget {
             ],
           );
 
-    if (width != null || height != null) {
-      buttonChild = SizedBox(
-        width: width,
-        height: height,
-        child: buttonChild,
-      );
-    }
-
-    return ElevatedButton(
-      onPressed: isButtonEnabled ? onPressed : null,
+    Widget button = ElevatedButton(
+      onPressed: isButtonEnabled ? onPressed : () {},
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor ?? AppTheme.primaryRed,
         foregroundColor: textColor ?? AppTheme.textPrimary,
@@ -141,8 +133,22 @@ class PrimaryButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius ?? 8),
         ),
         padding: padding ?? EdgeInsets.zero,
+        // Disable material design constraints
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        minimumSize: Size.zero,
       ),
       child: buttonChild,
     );
+
+    // Apply custom size constraints
+    if (width != null || height != null) {
+      button = SizedBox(
+        width: width,
+        height: height,
+        child: button,
+      );
+    }
+
+    return button;
   }
 }
