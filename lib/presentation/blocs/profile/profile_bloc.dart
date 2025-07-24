@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:shartflix/core/injection/injection.dart';
+import 'package:shartflix/core/services/services.dart';
 
 import 'package:shartflix/domain/entities/entities.dart';
 import 'package:shartflix/domain/usecases/usecases.dart';
@@ -49,6 +51,8 @@ class ProfileDataLoaded extends ProfileState {
   List<Object> get props => [user];
 }
 
+class ProfileUserDataRefreshRequested extends ProfileEvent {}
+
 class ProfilePhotoUploading extends ProfileState {}
 
 class ProfilePhotoUploadSuccess extends ProfileState {
@@ -75,6 +79,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc(this._uploadPhotoUseCase) : super(ProfileInitial()) {
     on<ProfilePhotoUploadRequested>(_onProfilePhotoUploadRequested);
     on<ProfileDataUpdated>(_onProfileDataUpdated);
+    on<ProfileUserDataRefreshRequested>(_onProfileUserDataRefreshRequested);
   }
 
   Future<void> _onProfilePhotoUploadRequested(
@@ -98,5 +103,21 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) {
     emit(ProfileDataLoaded(user: event.user));
+  }
+
+  void _onProfileUserDataRefreshRequested(
+    ProfileUserDataRefreshRequested event,
+    Emitter<ProfileState> emit,
+  ) {
+    final userData = sl<AuthService>().getUserData();
+    if (userData != null) {
+      final user = UserEntity(
+        id: userData['id'],
+        name: userData['name'],
+        email: userData['email'],
+        photoUrl: userData['photoUrl'],
+      );
+      emit(ProfileDataLoaded(user: user));
+    }
   }
 }

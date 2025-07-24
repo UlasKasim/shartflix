@@ -19,11 +19,6 @@ abstract class ApiClient {
   @GET('/user/profile')
   Future<UserProfileResponse> getUserProfile();
 
-  // Photo upload - With generated UploadPhotoRequest model
-  @MultiPart()
-  @POST('/user/upload_photo')
-  Future<UploadPhotoResponse> uploadPhoto(@Body() UploadPhotoRequest request);
-
   // Movie Endpoints
   @GET('/movie/list')
   Future<MovieListResponse> getMovies(@Query('page') int page);

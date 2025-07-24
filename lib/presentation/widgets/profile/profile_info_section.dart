@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shartflix/core/extensions/localization_extension.dart';
 
 import '../../../core/theme/app_theme.dart';
 import '../../blocs/auth/auth_bloc.dart';
+import '../../blocs/profile/profile_bloc.dart';
 import '../../routes/app_router.dart';
 import '../home/custom_cached_image.dart';
 import '../common/primary_button.dart';
@@ -18,23 +20,32 @@ class ProfileInfoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 35),
-      child: Row(
-        children: [
-          // Avatar
-          _buildAvatar(),
+    return BlocListener<ProfileBloc, ProfileState>(
+      listener: (context, profileState) {
+        // ✨ Listen to photo upload success and refresh AuthBloc
+        if (profileState is ProfilePhotoUploadSuccess) {
+          // Trigger AuthBloc to refresh user profile
+          context.read<AuthBloc>().add(AuthUserProfileRequested());
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Row(
+          children: [
+            // Avatar
+            _buildAvatar(),
 
-          const SizedBox(width: 16),
+            const SizedBox(width: 16),
 
-          // User Info
-          Expanded(
-            child: _buildUserInfo(context),
-          ),
+            // User Info
+            Expanded(
+              child: _buildUserInfo(context),
+            ),
 
-          // Upload Photo Button
-          _buildUploadButton(context),
-        ],
+            // Upload Photo Button
+            _buildUploadButton(context),
+          ],
+        ),
       ),
     );
   }

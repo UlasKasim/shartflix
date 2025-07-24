@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:http_parser/http_parser.dart';
+import 'package:shartflix/core/constants/constants.dart';
 import 'package:shartflix/core/error/error.dart';
+import 'package:shartflix/core/injection/injection.dart';
 import 'package:shartflix/core/network/network.dart';
+import 'package:shartflix/core/services/services.dart';
 import 'package:shartflix/data/models/models.dart';
 
 abstract class AuthRemoteDataSource {
@@ -78,17 +80,42 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
             message: 'Selected file does not exist');
       }
 
-      // Create UploadPhotoRequest using factory method
-      var filename = file.path.split('/').last;
-      final uploadRequest = await UploadPhotoRequest.fromFilePath(
-        filePath,
-        filename: filename,
+      // Create FormData properly
+      final formData = FormData.fromMap({
+        'file': await MultipartFile.fromFile(
+          file.path,
+          filename: file.path.split('/').last,
+        ),
+      });
+
+      // Create clean Dio instance without problematic interceptors
+      final uploadDio = Dio(BaseOptions(
+        baseUrl: AppConstants.baseUrl,
+        headers: {
+          'Accept': 'application/json',
+        },
+      ));
+
+      // Add auth token manually
+      final token = await sl<AuthService>().getAccessToken();
+      if (token != null && token.isNotEmpty) {
+        uploadDio.options.headers['Authorization'] = 'Bearer $token';
+      }
+
+      // Direct upload call
+      final response = await uploadDio.post(
+        '/user/upload_photo',
+        data: formData,
       );
 
-      // Call ApiClient with generated model
-      final response = await _apiClient.uploadPhoto(uploadRequest);
+      // Parse response manually
+      if (response.data != null &&
+          response.data['data'] != null &&
+          response.data['data']['photoUrl'] != null) {
+        return response.data['data']['photoUrl'] as String;
+      }
 
-      return response.photoUrl;
+      throw const ServerException(message: 'Invalid response format');
     } on DioException catch (e) {
       final exception = _handleDioException(e);
       if (exception is AuthException) {
