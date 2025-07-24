@@ -11,139 +11,136 @@ class LimitedOfferBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.vertical(
-        top: Radius.circular(32),
-      ),
-      child: ColoredBox(
-        color: AppTheme.backgroundDark,
-        child: Stack(
-          children: [
-            // Top Blur Effect - positioned relative to the modal content
-            Positioned(
-              top: -20,
-              left: MediaQuery.of(context).size.width * 0.25,
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.5,
-                height: MediaQuery.of(context).size.width * 0.5,
-                decoration: const BoxDecoration(
-                  color: AppTheme.primaryRed,
-                  shape: BoxShape.circle,
-                ),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 216, sigmaY: 216),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                      shape: BoxShape.circle,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height, // Full screen height
+      child: ClipRRect(
+        borderRadius: const BorderRadius.vertical(
+          top: Radius.circular(32),
+        ),
+        child: ColoredBox(
+          color: AppTheme.backgroundDark,
+          child: Stack(
+            children: [
+              // Top Blur Effect - positioned relative to the modal content
+              Positioned(
+                top: -20,
+                left: MediaQuery.of(context).size.width * 0.25,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.55,
+                  height: MediaQuery.of(context).size.width * 0.55,
+                  decoration: const BoxDecoration(
+                    color: AppTheme.primaryRed,
+                    shape: BoxShape.circle,
+                  ),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        shape: BoxShape.circle,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
 
-            // Bottom Blur Effect - positioned relative to modal content
-            Positioned(
-              bottom: 20,
-              left: MediaQuery.of(context).size.width * 0.5 - 108,
-              child: Container(
-                width: 216,
-                height: 216,
-                decoration: const BoxDecoration(
-                  color: AppTheme.primaryRed,
-                  shape: BoxShape.circle,
-                ),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 250, sigmaY: 250),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                      shape: BoxShape.circle,
+              // Bottom Blur Effect - positioned relative to modal content
+              Positioned(
+                bottom: 20,
+                left: MediaQuery.of(context).size.width * 0.5 - 108,
+                child: Container(
+                  width: 216,
+                  height: 216,
+                  decoration: const BoxDecoration(
+                    color: AppTheme.primaryRed,
+                    shape: BoxShape.circle,
+                  ),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 250, sigmaY: 250),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                        shape: BoxShape.circle,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
 
-            // Main Content
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 24),
+              // Main Content
+              SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const SizedBox(height: 24),
 
-                        // Title - "Sınırlı Teklif"
-                        Text(
-                          context.l10n.limitedOffer,
-                          style: const TextStyle(
-                            fontFamily: AssetConstants.fontEuclidCircularA,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            height: 1.0,
-                            letterSpacing: 0,
-                          ),
-                        ),
-
-                        const SizedBox(height: 4),
-
-                        // Description
-                        const Text(
-                          'Jeton paketi\'ni seçerek bonus\n kazanın ve yeni bölümlerin kilidini açın!',
-                          style: TextStyle(
-                            fontFamily: AssetConstants.fontEuclidCircularA,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
-                            height: 1.5, // 18px / 12px = 1.5
-                            letterSpacing: 0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-
-                        const SizedBox(height: 16),
-
-                        // Bonuses Container
-                        _buildBonusesContainer(context),
-
-                        const SizedBox(height: 16),
-
-                        // "Kilidi açmak için bir jeton paketi seçin"
-                        const Text(
-                          'Kilidi açmak için bir jeton paketi seçin',
-                          style: TextStyle(
-                            fontFamily: AssetConstants.fontEuclidCircularA,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                            height: 1.0,
-                            letterSpacing: 0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-
-                        const SizedBox(height: 16),
-
-                        // Token Packages
-                        _buildTokenPackages(),
-
-                        const SizedBox(height: 16),
-
-                        // Bottom Button
-                        _buildBottomButton(context),
-
-                        const SizedBox(height: 16),
-                      ],
+                    // Title - "Sınırlı Teklif"
+                    Text(
+                      context.l10n.limitedOffer,
+                      style: const TextStyle(
+                        fontFamily: AssetConstants.fontEuclidCircularA,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        height: 1.0,
+                        letterSpacing: 0,
+                      ),
                     ),
-                  ),
+
+                    const SizedBox(height: 4),
+
+                    // Description
+                    const Text(
+                      'Jeton paketi\'ni seçerek bonus\n kazanın ve yeni bölümlerin kilidini açın!',
+                      style: TextStyle(
+                        fontFamily: AssetConstants.fontEuclidCircularA,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                        height: 1.5, // 18px / 12px = 1.5
+                        letterSpacing: 0,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // Bonuses Container
+                    _buildBonusesContainer(context),
+
+                    const SizedBox(height: 16),
+
+                    // "Kilidi açmak için bir jeton paketi seçin"
+                    const Text(
+                      'Kilidi açmak için bir jeton paketi seçin',
+                      style: TextStyle(
+                        fontFamily: AssetConstants.fontEuclidCircularA,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        height: 1.0,
+                        letterSpacing: 0,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    // Token Packages
+                    _buildTokenPackages(),
+
+                    const SizedBox(height: 16),
+
+                    // Bottom Button
+                    _buildBottomButton(context),
+
+                    const SizedBox(height: 16),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -151,7 +148,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
 
   Widget _buildBonusesContainer(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
@@ -186,15 +183,15 @@ class LimitedOfferBottomSheet extends StatelessWidget {
 
           // Bonus Items Row
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildBonusItem(
                   AssetConstants.offerDiamond, 'Premium\nHesap', 33),
               _buildBonusItem(AssetConstants.offerMultipleHearts,
-                  'Daha Fazla\nEşleşme', 39),
+                  'Daha\nFazla Eşleşme', 39),
               _buildBonusItem(AssetConstants.offerMushroom, 'Öne\nÇıkarma', 33),
               _buildBonusItem(
-                  AssetConstants.offerHeart, 'Daha Fazla\nBeğeni', 33),
+                  AssetConstants.offerHeart, 'Daha\nFazla Beğeni', 33),
             ],
           ),
         ],
@@ -203,47 +200,64 @@ class LimitedOfferBottomSheet extends StatelessWidget {
   }
 
   Widget _buildBonusItem(String iconName, String title, double iconSize) {
-    return Column(
-      children: [
-        // Circle with icon
-        SizedBox(
-          width: 55,
-          height: 55,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              // Background circle
-              SvgPicture.asset(
-                AssetConstants.offerCircle,
-                width: 55,
-                height: 55,
+    return Flexible(
+      child: Column(
+        children: [
+          Container(
+            width: 55,
+            height: 55,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: Colors.white,
+                width: 0.0,
               ),
-              // Icon
-              Image.asset(
-                iconName,
-                width: iconSize,
-                height: iconSize,
-              ),
-            ],
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.white,
+                  blurRadius: 9,
+                  spreadRadius: -8,
+                  offset: Offset(0, 0),
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  blurRadius: 6,
+                  spreadRadius: -5,
+                  offset: Offset(0, 0),
+                ),
+              ],
+            ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                SvgPicture.asset(
+                  AssetConstants.offerCircle,
+                  width: 55,
+                  height: 55,
+                ),
+                Image.asset(
+                  iconName,
+                  width: iconSize,
+                  height: iconSize,
+                ),
+              ],
+            ),
           ),
-        ),
-
-        const SizedBox(height: 12),
-
-        // Title
-        Text(
-          title,
-          style: const TextStyle(
-            fontFamily: AssetConstants.fontEuclidCircularA,
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-            height: 1.5, // 18px / 12px = 1.5
-            letterSpacing: 0,
+          const SizedBox(height: 12),
+          Text(
+            title,
+            style: const TextStyle(
+              fontFamily: AssetConstants.fontEuclidCircularA,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: Colors.white,
+              height: 1.5,
+              letterSpacing: 0,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -259,7 +273,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
             '₺99,99',
             'Başına haftalık',
             const [Color(0xFF6F060B), Color(0xFFE50914)],
-            const Color(0xFFE50914),
+            const Color(0xFF6F060B),
           ),
         ),
         const SizedBox(width: 12),
@@ -285,7 +299,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
             '₺399,99',
             'Başına haftalık',
             const [Color(0xFF6F060B), Color(0xFFE50914)],
-            const Color(0xFFE50914),
+            const Color(0xFF6F060B),
           ),
         ),
       ],
@@ -301,122 +315,145 @@ class LimitedOfferBottomSheet extends StatelessWidget {
     List<Color> gradientColors,
     Color badgeColor,
   ) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        gradient: RadialGradient(
-          center: Alignment.center,
-          radius: 1.0,
-          colors: gradientColors,
-        ),
-      ),
-      child: Column(
-        children: [
-          // Percentage Badge
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: badgeColor,
-              borderRadius: BorderRadius.circular(24),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.white.withValues(alpha: 0.3),
-                  blurRadius: 8.33,
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.fromLTRB(12, 28, 12, 20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            gradient: RadialGradient(
+              // Fixed typo from Radial SaccharGradient
+              center: const Alignment(-0.7, -0.7),
+              radius: 1.5,
+              colors: gradientColors,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // Allow dynamic height
+            children: [
+              const SizedBox(height: 24),
+              Text(
+                oldAmount,
+                style: const TextStyle(
+                  fontFamily: AssetConstants.fontEuclidCircularA,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                  height: 1.0,
+                  decoration: TextDecoration.lineThrough,
+                  decorationColor: Colors.white,
                 ),
-              ],
-            ),
-            child: Text(
-              percentage,
-              style: const TextStyle(
-                fontFamily: AssetConstants.fontEuclidCircularA,
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                color: Colors.white,
-                height: 1.5, // 18px / 12px = 1.5
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
+              const SizedBox(height: 4),
+              Text(
+                newAmount,
+                style: const TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 24,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                  height: 1.0,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 4),
+              const Text(
+                'Jeton',
+                style: TextStyle(
+                  fontFamily: AssetConstants.fontEuclidCircularA,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                  height: 1.0,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 32),
+              Text(
+                price,
+                style: const TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                  height: 1.0,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: const TextStyle(
+                  fontFamily: AssetConstants.fontEuclidCircularA,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                  height: 1.1,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+        ),
+        Positioned(
+          top: -12.5,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Container(
+              height: 25,
+              width: 61,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                color: badgeColor,
+                borderRadius: BorderRadius.circular(12.5),
+                border: Border.all(
+                  color: Colors.white.withValues(alpha: 0.4),
+                  width: 1,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white.withValues(alpha: 0.3),
+                    blurRadius: 8.33,
+                    spreadRadius: -4,
+                    offset: const Offset(0, 0),
+                  ),
+                  BoxShadow(
+                    color: Colors.white.withValues(alpha: 0.15),
+                    blurRadius: 16,
+                    spreadRadius: -8,
+                    offset: const Offset(0, 0),
+                  ),
+                  BoxShadow(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    blurRadius: 8.33,
+                    spreadRadius: 0,
+                    offset: const Offset(0, 0),
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  percentage,
+                  style: const TextStyle(
+                    fontFamily: AssetConstants.fontEuclidCircularA,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                    height: 1.0,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
           ),
-
-          const SizedBox(height: 16),
-
-          // Old amount (strikethrough)
-          Text(
-            oldAmount,
-            style: const TextStyle(
-              fontFamily: AssetConstants.fontEuclidCircularA,
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
-              height: 1.0,
-              decoration: TextDecoration.lineThrough,
-              decorationColor: Colors.white,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 8),
-
-          // New amount (big)
-          Text(
-            newAmount,
-            style: const TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 25,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              height: 1.0,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 4),
-
-          // "Jeton" text
-          const Text(
-            'Jeton',
-            style: TextStyle(
-              fontFamily: AssetConstants.fontEuclidCircularA,
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
-              height: 1.0,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 16),
-
-          // Price
-          Text(
-            price,
-            style: const TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 15,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              height: 1.0,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 4),
-
-          // Subtitle
-          Text(
-            subtitle,
-            style: const TextStyle(
-              fontFamily: AssetConstants.fontEuclidCircularA,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
-              height: 1.5, // 18px / 12px = 1.5
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
