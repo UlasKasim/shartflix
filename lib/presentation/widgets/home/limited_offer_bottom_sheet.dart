@@ -6,13 +6,19 @@ import 'dart:ui';
 
 import '../../../core/constants/asset_constants.dart';
 
-class LimitedOfferBottomSheet extends StatelessWidget {
+class LimitedOfferBottomSheet extends StatefulWidget {
   const LimitedOfferBottomSheet({super.key});
 
   @override
+  State<LimitedOfferBottomSheet> createState() =>
+      _LimitedOfferBottomSheetState();
+}
+
+class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height, // Full screen height
+      height: MediaQuery.of(context).size.height,
       child: ClipRRect(
         borderRadius: const BorderRadius.vertical(
           top: Radius.circular(32),
@@ -21,7 +27,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
           color: AppTheme.backgroundDark,
           child: Stack(
             children: [
-              // Top Blur Effect - positioned relative to the modal content
+              // Top Blur Effect
               Positioned(
                 top: -20,
                 left: MediaQuery.of(context).size.width * 0.25,
@@ -44,7 +50,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
                 ),
               ),
 
-              // Bottom Blur Effect - positioned relative to modal content
+              // Bottom Blur Effect
               Positioned(
                 bottom: 20,
                 left: MediaQuery.of(context).size.width * 0.5 - 108,
@@ -75,7 +81,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
                   children: [
                     const SizedBox(height: 24),
 
-                    // Title - "Sınırlı Teklif"
+                    // Title
                     Text(
                       context.l10n.limitedOffer,
                       style: const TextStyle(
@@ -91,14 +97,14 @@ class LimitedOfferBottomSheet extends StatelessWidget {
                     const SizedBox(height: 4),
 
                     // Description
-                    const Text(
-                      'Jeton paketi\'ni seçerek bonus\n kazanın ve yeni bölümlerin kilidini açın!',
-                      style: TextStyle(
+                    Text(
+                      context.l10n.limitedOfferDescription,
+                      style: const TextStyle(
                         fontFamily: AssetConstants.fontEuclidCircularA,
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: Colors.white,
-                        height: 1.5, // 18px / 12px = 1.5
+                        height: 1.5,
                         letterSpacing: 0,
                       ),
                       textAlign: TextAlign.center,
@@ -111,10 +117,10 @@ class LimitedOfferBottomSheet extends StatelessWidget {
 
                     const SizedBox(height: 16),
 
-                    // "Kilidi açmak için bir jeton paketi seçin"
-                    const Text(
-                      'Kilidi açmak için bir jeton paketi seçin',
-                      style: TextStyle(
+                    // Token Package Selection Prompt
+                    Text(
+                      context.l10n.selectTokenPackage,
+                      style: const TextStyle(
                         fontFamily: AssetConstants.fontEuclidCircularA,
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -128,7 +134,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
                     const SizedBox(height: 24),
 
                     // Token Packages
-                    _buildTokenPackages(),
+                    _buildTokenPackages(context),
 
                     const SizedBox(height: 16),
 
@@ -166,10 +172,10 @@ class LimitedOfferBottomSheet extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // "Alacağınız Bonuslar"
-          const Text(
-            'Alacağınız Bonuslar',
-            style: TextStyle(
+          // Bonuses Title
+          Text(
+            context.l10n.bonusesTitle,
+            style: const TextStyle(
               fontFamily: AssetConstants.fontEuclidCircularA,
               fontSize: 15,
               fontWeight: FontWeight.w500,
@@ -186,12 +192,13 @@ class LimitedOfferBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildBonusItem(
-                  AssetConstants.offerDiamond, 'Premium\nHesap', 33),
+                  AssetConstants.offerDiamond, context.l10n.premiumAccount, 33),
               _buildBonusItem(AssetConstants.offerMultipleHearts,
-                  'Daha\nFazla Eşleşme', 39),
-              _buildBonusItem(AssetConstants.offerMushroom, 'Öne\nÇıkarma', 33),
+                  context.l10n.moreMatches, 39),
               _buildBonusItem(
-                  AssetConstants.offerHeart, 'Daha\nFazla Beğeni', 33),
+                  AssetConstants.offerMushroom, context.l10n.highlight, 33),
+              _buildBonusItem(
+                  AssetConstants.offerHeart, context.l10n.moreLikes, 33),
             ],
           ),
         ],
@@ -261,7 +268,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildTokenPackages() {
+  Widget _buildTokenPackages(BuildContext context) {
     return Row(
       children: [
         // Left package - +10%
@@ -271,7 +278,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
             '200',
             '330',
             '₺99,99',
-            'Başına haftalık',
+            context.l10n.perWeek,
             const [Color(0xFF6F060B), Color(0xFFE50914)],
             const Color(0xFF6F060B),
           ),
@@ -284,7 +291,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
             '2.000',
             '3.375',
             '₺799,99',
-            'Başına haftalık',
+            context.l10n.perWeek,
             const [Color(0xFF5949E6), Color(0xFFE50914)],
             const Color(0xFF5949E6),
           ),
@@ -297,7 +304,7 @@ class LimitedOfferBottomSheet extends StatelessWidget {
             '1.000',
             '1.350',
             '₺399,99',
-            'Başına haftalık',
+            context.l10n.perWeek,
             const [Color(0xFF6F060B), Color(0xFFE50914)],
             const Color(0xFF6F060B),
           ),
@@ -323,15 +330,15 @@ class LimitedOfferBottomSheet extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(12, 28, 12, 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.4)),
             gradient: RadialGradient(
-              // Fixed typo from Radial SaccharGradient
               center: const Alignment(-0.7, -0.7),
               radius: 1.5,
               colors: gradientColors,
             ),
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.min, // Allow dynamic height
+            mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: 24),
               Text(
@@ -360,9 +367,9 @@ class LimitedOfferBottomSheet extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 4),
-              const Text(
-                'Jeton',
-                style: TextStyle(
+              Text(
+                context.l10n.tokenLabel,
+                style: const TextStyle(
                   fontFamily: AssetConstants.fontEuclidCircularA,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -472,9 +479,9 @@ class LimitedOfferBottomSheet extends StatelessWidget {
           ),
           elevation: 0,
         ),
-        child: const Text(
-          'Tüm Jetonları Gör',
-          style: TextStyle(
+        child: Text(
+          context.l10n.viewAllTokens,
+          style: const TextStyle(
             fontFamily: AssetConstants.fontEuclidCircularA,
             fontSize: 15,
             fontWeight: FontWeight.w500,

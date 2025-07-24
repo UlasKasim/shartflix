@@ -171,16 +171,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get about => 'Hakkında';
 
   @override
-  String get limitedOffer => 'Sınırlı Teklif';
-
-  @override
   String get specialOfferDesc => 'Jeton paketin\'ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!';
 
   @override
   String get getBonuses => 'Alacağınız Bonuslar';
-
-  @override
-  String get premiumAccount => 'Premium Hesap';
 
   @override
   String get moreInteraction => 'Daha Fazla Eşleşme';
@@ -189,13 +183,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get unlockFeatures => 'Öne Çıkarma';
 
   @override
-  String get moreLikes => 'Daha Fazla Beğeni';
-
-  @override
   String get unlockEpisode => 'Kilidi açmak için bir jeton paketi seçin';
-
-  @override
-  String get viewAllTokens => 'Tüm Jetonları Gör';
 
   @override
   String get weeklyOffers => 'Başına haftalık';
@@ -343,4 +331,37 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get awards => 'Ödüller';
+
+  @override
+  String get limitedOffer => 'Sınırlı Teklif';
+
+  @override
+  String get limitedOfferDescription => 'Jeton paketi\'ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!';
+
+  @override
+  String get selectTokenPackage => 'Kilidi açmak için bir jeton paketi seçin';
+
+  @override
+  String get bonusesTitle => 'Alacağınız Bonuslar';
+
+  @override
+  String get premiumAccount => 'Premium\nHesap';
+
+  @override
+  String get moreMatches => 'Daha\nFazla Eşleşme';
+
+  @override
+  String get highlight => 'Öne\nÇıkarma';
+
+  @override
+  String get moreLikes => 'Daha\nFazla Beğeni';
+
+  @override
+  String get perWeek => 'Başına haftalık';
+
+  @override
+  String get viewAllTokens => 'Tüm Jetonları Gör';
+
+  @override
+  String get tokenLabel => 'Jeton';
 }

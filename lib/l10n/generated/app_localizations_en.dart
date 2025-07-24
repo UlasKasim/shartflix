@@ -171,16 +171,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get about => 'About';
 
   @override
-  String get limitedOffer => 'Limited Offer';
-
-  @override
   String get specialOfferDesc => 'Choose a token package to earn bonus and unlock new episodes!';
 
   @override
   String get getBonuses => 'Your Bonuses';
-
-  @override
-  String get premiumAccount => 'Premium Account';
 
   @override
   String get moreInteraction => 'More Matches';
@@ -189,13 +183,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unlockFeatures => 'Featured';
 
   @override
-  String get moreLikes => 'More Likes';
-
-  @override
   String get unlockEpisode => 'Choose a token package to unlock';
-
-  @override
-  String get viewAllTokens => 'View All Tokens';
 
   @override
   String get weeklyOffers => 'Per week';
@@ -343,4 +331,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get awards => 'Awards';
+
+  @override
+  String get limitedOffer => 'Limited Offer';
+
+  @override
+  String get limitedOfferDescription => 'Choose a token package to earn bonuses and unlock new episodes!';
+
+  @override
+  String get selectTokenPackage => 'Choose a token package to unlock';
+
+  @override
+  String get bonusesTitle => 'Bonuses You\'ll Receive';
+
+  @override
+  String get premiumAccount => 'Premium\nAccount';
+
+  @override
+  String get moreMatches => 'More\nMatches';
+
+  @override
+  String get highlight => 'Highlight';
+
+  @override
+  String get moreLikes => 'More\nLikes';
+
+  @override
+  String get perWeek => 'Per Week';
+
+  @override
+  String get viewAllTokens => 'View All Tokens';
+
+  @override
+  String get tokenLabel => 'Token';
 }

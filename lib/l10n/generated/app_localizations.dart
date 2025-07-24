@@ -419,12 +419,6 @@ abstract class AppLocalizations {
   /// **'About'**
   String get about;
 
-  /// Limited offer title
-  ///
-  /// In en, this message translates to:
-  /// **'Limited Offer'**
-  String get limitedOffer;
-
   /// Special offer description
   ///
   /// In en, this message translates to:
@@ -436,12 +430,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your Bonuses'**
   String get getBonuses;
-
-  /// Premium account bonus
-  ///
-  /// In en, this message translates to:
-  /// **'Premium Account'**
-  String get premiumAccount;
 
   /// More interaction bonus
   ///
@@ -455,23 +443,11 @@ abstract class AppLocalizations {
   /// **'Featured'**
   String get unlockFeatures;
 
-  /// More likes bonus
-  ///
-  /// In en, this message translates to:
-  /// **'More Likes'**
-  String get moreLikes;
-
   /// Unlock episode instruction
   ///
   /// In en, this message translates to:
   /// **'Choose a token package to unlock'**
   String get unlockEpisode;
-
-  /// View all tokens button
-  ///
-  /// In en, this message translates to:
-  /// **'View All Tokens'**
-  String get viewAllTokens;
 
   /// Weekly offers text
   ///
@@ -766,6 +742,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Awards'**
   String get awards;
+
+  /// Title for the limited offer bottom sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Limited Offer'**
+  String get limitedOffer;
+
+  /// Description encouraging users to select a token package for bonuses and unlocking episodes
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a token package to earn bonuses and unlock new episodes!'**
+  String get limitedOfferDescription;
+
+  /// Prompt to select a token package
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a token package to unlock'**
+  String get selectTokenPackage;
+
+  /// Title for the bonuses section
+  ///
+  /// In en, this message translates to:
+  /// **'Bonuses You\'ll Receive'**
+  String get bonusesTitle;
+
+  /// Label for the premium account bonus
+  ///
+  /// In en, this message translates to:
+  /// **'Premium\nAccount'**
+  String get premiumAccount;
+
+  /// Label for the more matches bonus
+  ///
+  /// In en, this message translates to:
+  /// **'More\nMatches'**
+  String get moreMatches;
+
+  /// Label for the highlight bonus
+  ///
+  /// In en, this message translates to:
+  /// **'Highlight'**
+  String get highlight;
+
+  /// Label for the more likes bonus
+  ///
+  /// In en, this message translates to:
+  /// **'More\nLikes'**
+  String get moreLikes;
+
+  /// Label indicating price is per week
+  ///
+  /// In en, this message translates to:
+  /// **'Per Week'**
+  String get perWeek;
+
+  /// Button text to view all token packages
+  ///
+  /// In en, this message translates to:
+  /// **'View All Tokens'**
+  String get viewAllTokens;
+
+  /// Label for token
+  ///
+  /// In en, this message translates to:
+  /// **'Token'**
+  String get tokenLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

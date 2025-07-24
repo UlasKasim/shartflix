@@ -216,10 +216,6 @@
     "@about": {
         "description": "About menu item"
     },
-    "limitedOffer": "Limited Offer",
-    "@limitedOffer": {
-        "description": "Limited offer title"
-    },
     "specialOfferDesc": "Choose a token package to earn bonus and unlock new episodes!",
     "@specialOfferDesc": {
         "description": "Special offer description"
@@ -227,10 +223,6 @@
     "getBonuses": "Your Bonuses",
     "@getBonuses": {
         "description": "Get bonuses section title"
-    },
-    "premiumAccount": "Premium Account",
-    "@premiumAccount": {
-        "description": "Premium account bonus"
     },
     "moreInteraction": "More Matches",
     "@moreInteraction": {
@@ -240,17 +232,9 @@
     "@unlockFeatures": {
         "description": "Unlock features bonus"
     },
-    "moreLikes": "More Likes",
-    "@moreLikes": {
-        "description": "More likes bonus"
-    },
     "unlockEpisode": "Choose a token package to unlock",
     "@unlockEpisode": {
         "description": "Unlock episode instruction"
-    },
-    "viewAllTokens": "View All Tokens",
-    "@viewAllTokens": {
-        "description": "View all tokens button"
     },
     "weeklyOffers": "Per week",
     "@weeklyOffers": {
@@ -447,5 +431,49 @@
     "awards": "Awards",
     "@awards": {
         "description": "Label for the awards received by the movie in the ratings and awards section."
+    },
+    "limitedOffer": "Limited Offer",
+    "@limitedOffer": {
+        "description": "Title for the limited offer bottom sheet"
+    },
+    "limitedOfferDescription": "Choose a token package to earn bonuses and unlock new episodes!",
+    "@limitedOfferDescription": {
+        "description": "Description encouraging users to select a token package for bonuses and unlocking episodes"
+    },
+    "selectTokenPackage": "Choose a token package to unlock",
+    "@selectTokenPackage": {
+        "description": "Prompt to select a token package"
+    },
+    "bonusesTitle": "Bonuses You'll Receive",
+    "@bonusesTitle": {
+        "description": "Title for the bonuses section"
+    },
+    "premiumAccount": "Premium\nAccount",
+    "@premiumAccount": {
+        "description": "Label for the premium account bonus"
+    },
+    "moreMatches": "More\nMatches",
+    "@moreMatches": {
+        "description": "Label for the more matches bonus"
+    },
+    "highlight": "Highlight",
+    "@highlight": {
+        "description": "Label for the highlight bonus"
+    },
+    "moreLikes": "More\nLikes",
+    "@moreLikes": {
+        "description": "Label for the more likes bonus"
+    },
+    "perWeek": "Per Week",
+    "@perWeek": {
+        "description": "Label indicating price is per week"
+    },
+    "viewAllTokens": "View All Tokens",
+    "@viewAllTokens": {
+        "description": "Button text to view all token packages"
+    },
+    "tokenLabel": "Token",
+    "@tokenLabel": {
+        "description": "Label for token"
     }
 }
