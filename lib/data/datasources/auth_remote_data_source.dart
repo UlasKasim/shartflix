@@ -1,14 +1,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-
-import '../../core/error/exceptions.dart';
-import '../../core/network/api_client.dart';
-import '../models/auth/login_request.dart';
-import '../models/auth/login_response.dart';
-import '../models/auth/register_request.dart';
-import '../models/auth/register_response.dart';
-import '../models/auth/user_profile_response.dart';
+import 'package:shartflix/core/error/error.dart';
+import 'package:shartflix/core/network/network.dart';
+import 'package:shartflix/data/models/models.dart';
 
 abstract class AuthRemoteDataSource {
   Future<LoginResponse> login(LoginRequest request);

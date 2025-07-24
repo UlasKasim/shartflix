@@ -2,18 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shartflix/core/constants/constants.dart';
 
-import '../../../core/extensions/localization_extension.dart';
-import '../../../core/services/navigation_service.dart';
-import '../../../core/injection/injection_container.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../blocs/auth/auth_bloc.dart';
-import '../../blocs/auth/password_visibility_cubit.dart';
-import '../../routes/app_router.dart';
-import '../../widgets/auth/auth_text_field.dart';
-import '../../widgets/auth/auth_base_widget.dart';
-import '../../widgets/common/loading_overlay.dart';
+import 'package:shartflix/core/core.dart';
+import 'package:shartflix/presentation/blocs/blocs.dart';
+import 'package:shartflix/presentation/routes/routes.dart';
+import 'package:shartflix/presentation/widgets/widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

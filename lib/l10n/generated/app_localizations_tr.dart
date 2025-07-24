@@ -204,9 +204,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get logoutSuccess => 'Çıkış başarılı';
 
   @override
-  String get photoUploadSuccess => 'Fotoğraf yüklendi';
-
-  @override
   String get errorNetwork => 'İnternet bağlantınızı kontrol edin';
 
   @override
@@ -364,4 +361,19 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get tokenLabel => 'Jeton';
+
+  @override
+  String get uploadYourPhotos => 'Fotoğraflarınızı Yükleyin';
+
+  @override
+  String get photoUploadDescription => 'Profil fotoğrafınız olarak kullanmak üzere galerinizden bir fotoğraf seçin. Net ve sizi iyi temsil eden bir fotoğraf seçtiğinizden emin olun.';
+
+  @override
+  String get continueText => 'Devam Et';
+
+  @override
+  String get photoUploadSuccess => 'Fotoğraf başarıyla yüklendi!';
+
+  @override
+  String get errorImagePicker => 'Görsel seçilemedi. Lütfen tekrar deneyin.';
 }

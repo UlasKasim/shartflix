@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../domain/entities/user_entity.dart';
-import '../../../domain/usecases/auth/upload_photo_usecase.dart';
+import 'package:shartflix/domain/entities/entities.dart';
+import 'package:shartflix/domain/usecases/usecases.dart';
 
 // Profile Events
 abstract class ProfileEvent extends Equatable {

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-
-import '../services/logger_service.dart';
+import 'package:shartflix/core/services/logger_service.dart';
 
 class CustomParseErrorLogger extends ParseErrorLogger {
   final LoggerService _logger;

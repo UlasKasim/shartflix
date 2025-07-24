@@ -1,0 +1,12 @@
+export 'custom_bottom_navigation.dart';
+export 'custom_cached_image.dart';
+export 'featured_movie_section.dart';
+export 'limited_offer_bottom_sheet.dart';
+export 'movie_background.dart';
+export 'movie_description_text.dart';
+export 'movie_details_bottom_sheet.dart';
+export 'movie_details_header.dart';
+export 'movie_details_section.dart';
+export 'movie_favorite_button.dart';
+export 'movie_images_gallery.dart';
+export 'movie_info_section.dart';

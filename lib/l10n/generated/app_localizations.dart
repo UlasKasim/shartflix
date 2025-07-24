@@ -485,12 +485,6 @@ abstract class AppLocalizations {
   /// **'Logout successful'**
   String get logoutSuccess;
 
-  /// Photo upload success message
-  ///
-  /// In en, this message translates to:
-  /// **'Photo uploaded'**
-  String get photoUploadSuccess;
-
   /// Network error message
   ///
   /// In en, this message translates to:
@@ -808,6 +802,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Token'**
   String get tokenLabel;
+
+  /// Title text for photo upload page
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Your Photos'**
+  String get uploadYourPhotos;
+
+  /// Description text explaining photo upload functionality
+  ///
+  /// In en, this message translates to:
+  /// **'Select a photo from your gallery to set as your profile picture. Make sure it\'s clear and represents you well.'**
+  String get photoUploadDescription;
+
+  /// Button text to proceed with photo upload
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueText;
+
+  /// Success message when photo upload is completed
+  ///
+  /// In en, this message translates to:
+  /// **'Photo uploaded successfully!'**
+  String get photoUploadSuccess;
+
+  /// Error message when image picker fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not select image. Please try again.'**
+  String get errorImagePicker;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

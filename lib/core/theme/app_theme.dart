@@ -192,7 +192,6 @@ class AppTheme {
           fontWeight: FontWeight.w600,
           fontFamily: AssetConstants.fontEuclidCircularA,
         ),
-        // Login Design Specific Styles
         headlineLarge: TextStyle(
           color: textPrimary,
           fontSize: 18,
@@ -284,24 +283,6 @@ class AppTheme {
           borderRadius: BorderRadius.circular(8),
         ),
         behavior: SnackBarBehavior.floating,
-      ),
-    );
-  }
-
-  // Light theme (optional - for future use)
-  static ThemeData get lightTheme {
-    return ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.light,
-      fontFamily: AssetConstants.fontEuclidCircularA,
-      colorScheme: const ColorScheme.light(
-        primary: primaryRed,
-        primaryContainer: lightRed,
-        secondary: darkRed,
-        surface: Colors.white,
-        onPrimary: Colors.white,
-        onSecondary: Colors.white,
-        onSurface: Colors.black87,
       ),
     );
   }

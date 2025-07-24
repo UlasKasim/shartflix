@@ -260,10 +260,6 @@
     "@logoutSuccess": {
         "description": "Logout success message"
     },
-    "photoUploadSuccess": "Photo uploaded",
-    "@photoUploadSuccess": {
-        "description": "Photo upload success message"
-    },
     "errorNetwork": "Check your internet connection",
     "@errorNetwork": {
         "description": "Network error message"
@@ -475,5 +471,25 @@
     "tokenLabel": "Token",
     "@tokenLabel": {
         "description": "Label for token"
+    },
+    "uploadYourPhotos": "Upload Your Photos",
+    "@uploadYourPhotos": {
+        "description": "Title text for photo upload page"
+    },
+    "photoUploadDescription": "Select a photo from your gallery to set as your profile picture. Make sure it's clear and represents you well.",
+    "@photoUploadDescription": {
+        "description": "Description text explaining photo upload functionality"
+    },
+    "continueText": "Continue",
+    "@continueText": {
+        "description": "Button text to proceed with photo upload"
+    },
+    "photoUploadSuccess": "Photo uploaded successfully!",
+    "@photoUploadSuccess": {
+        "description": "Success message when photo upload is completed"
+    },
+    "errorImagePicker": "Could not select image. Please try again.",
+    "@errorImagePicker": {
+        "description": "Error message when image picker fails"
     }
 }

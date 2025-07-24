@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shartflix/presentation/blocs/common/navigation_cubit.dart';
-import 'package:shartflix/presentation/widgets/home/custom_bottom_navigation.dart';
 
-import '../../../core/theme/app_theme.dart';
+import 'package:shartflix/core/core.dart';
+import 'package:shartflix/presentation/blocs/blocs.dart';
+import 'package:shartflix/presentation/widgets/widgets.dart';
 
 class MainPage extends StatelessWidget {
   final Widget child;

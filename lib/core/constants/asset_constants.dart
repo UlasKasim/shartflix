@@ -22,6 +22,7 @@ class AssetConstants {
   static const String iconArrowLeft = 'assets/icons/left.svg';
   static const String iconOffer = 'assets/icons/offer.svg';
   static const String iconLogo = 'assets/icons/logo.svg';
+  static const String iconAdd = 'assets/icons/add.svg';
 
   // Offer
   static const String offerCircle = 'assets/icons/offer_circle.svg';

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-
-import '../services/logger_service.dart';
+import 'package:shartflix/core/services/logger_service.dart';
 
 class LoggingInterceptor extends Interceptor {
   final LoggerService _logger;

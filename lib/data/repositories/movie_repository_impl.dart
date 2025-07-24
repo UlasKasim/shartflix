@@ -1,11 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/error/exceptions.dart';
-import '../../core/error/failures.dart';
-import '../../domain/entities/auth_entity.dart';
-import '../../domain/entities/movie_entity.dart';
-import '../../domain/repositories/movie_repository.dart';
-import '../datasources/movie_remote_data_source.dart';
+import 'package:shartflix/core/error/error.dart';
+import 'package:shartflix/data/data.dart';
+import 'package:shartflix/domain/domain.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource _remoteDataSource;

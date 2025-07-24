@@ -2,16 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-
-import '../../data/models/auth/login_request.dart';
-import '../../data/models/auth/login_response.dart';
-import '../../data/models/auth/register_request.dart';
-import '../../data/models/auth/register_response.dart';
-import '../../data/models/auth/user_profile_response.dart';
-import '../../data/models/auth/upload_photo_response.dart';
-import '../../data/models/movie/movie_list_response.dart';
-import '../../data/models/movie/favorite_movies_response.dart';
-import '../../data/models/movie/toggle_favorite_response.dart';
+import 'package:shartflix/data/models/models.dart';
 
 part 'api_client.g.dart';
 

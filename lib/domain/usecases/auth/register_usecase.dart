@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../core/error/failures.dart';
-import '../../entities/auth_entity.dart';
-import '../../repositories/auth_repository.dart';
-import '../usecase.dart';
+import 'package:shartflix/core/error/error.dart';
+import 'package:shartflix/domain/entities/entities.dart';
+import 'package:shartflix/domain/repositories/repositories.dart';
+import 'package:shartflix/domain/usecases/usecases.dart';
 
 class RegisterUseCase implements UseCase<AuthEntity, RegisterParams> {
   final AuthRepository repository;

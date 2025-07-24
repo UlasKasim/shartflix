@@ -1,14 +1,8 @@
 import 'package:dartz/dartz.dart';
-
-import '../../core/error/exceptions.dart';
-import '../../core/error/failures.dart';
-import '../../core/services/auth_service.dart';
-import '../../domain/entities/auth_entity.dart';
-import '../../domain/entities/user_entity.dart';
-import '../../domain/repositories/auth_repository.dart';
-import '../datasources/auth_remote_data_source.dart';
-import '../models/auth/login_request.dart';
-import '../models/auth/register_request.dart';
+import 'package:shartflix/core/error/error.dart';
+import 'package:shartflix/core/services/services.dart';
+import 'package:shartflix/data/data.dart';
+import 'package:shartflix/domain/domain.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource _remoteDataSource;

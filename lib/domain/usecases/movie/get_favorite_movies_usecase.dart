@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/error/failures.dart';
-import '../../entities/movie_entity.dart';
-import '../../repositories/movie_repository.dart';
-import '../usecase.dart';
+import 'package:shartflix/core/error/error.dart';
+import 'package:shartflix/domain/entities/entities.dart';
+import 'package:shartflix/domain/repositories/repositories.dart';
+import 'package:shartflix/domain/usecases/usecases.dart';
 
 class GetFavoriteMoviesUseCase implements UseCase<List<MovieEntity>, NoParams> {
   final MovieRepository repository;

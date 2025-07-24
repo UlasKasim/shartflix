@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
 
-import '../../core/error/exceptions.dart';
-import '../../core/network/api_client.dart';
-import '../models/movie/favorite_movies_response.dart';
-import '../models/movie/movie_list_response.dart';
-import '../models/movie/toggle_favorite_response.dart';
+import 'package:shartflix/core/error/error.dart';
+import 'package:shartflix/core/network/network.dart';
+import 'package:shartflix/data/models/models.dart';
 
 abstract class MovieRemoteDataSource {
   Future<MovieListResponse> getMovies(int page);

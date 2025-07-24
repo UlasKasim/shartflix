@@ -2,33 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shartflix/presentation/blocs/common/navigation_cubit.dart';
-
-import '../../domain/usecases/auth/get_user_profile_usecase.dart';
-import '../../domain/usecases/auth/upload_photo_usecase.dart';
-import '../network/api_client.dart';
-import '../network/dio_client.dart';
-import '../network/custom_parse_error_logger.dart';
-import '../services/auth_service.dart';
-import '../services/logger_service.dart';
-import '../services/navigation_service.dart';
-import '../services/storage_service.dart';
-import '../constants/app_constants.dart';
-import '../../data/datasources/auth_remote_data_source.dart';
-import '../../data/datasources/movie_remote_data_source.dart';
-import '../../data/repositories/auth_repository_impl.dart';
-import '../../data/repositories/movie_repository_impl.dart';
-import '../../domain/repositories/auth_repository.dart';
-import '../../domain/repositories/movie_repository.dart';
-import '../../domain/usecases/auth/login_usecase.dart';
-import '../../domain/usecases/auth/register_usecase.dart';
-import '../../domain/usecases/auth/logout_usecase.dart';
-import '../../domain/usecases/movie/get_movies_usecase.dart';
-import '../../domain/usecases/movie/get_favorite_movies_usecase.dart';
-import '../../domain/usecases/movie/toggle_favorite_movie_usecase.dart';
-import '../../presentation/blocs/auth/auth_bloc.dart';
-import '../../presentation/blocs/movie/movie_bloc.dart';
-import '../../presentation/blocs/profile/profile_bloc.dart';
+import 'package:shartflix/core/core.dart';
+import 'package:shartflix/data/data.dart';
+import 'package:shartflix/domain/domain.dart';
+import 'package:shartflix/presentation/blocs/blocs.dart';
 
 final GetIt sl = GetIt.instance;
 

@@ -204,9 +204,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logoutSuccess => 'Logout successful';
 
   @override
-  String get photoUploadSuccess => 'Photo uploaded';
-
-  @override
   String get errorNetwork => 'Check your internet connection';
 
   @override
@@ -364,4 +361,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tokenLabel => 'Token';
+
+  @override
+  String get uploadYourPhotos => 'Upload Your Photos';
+
+  @override
+  String get photoUploadDescription => 'Select a photo from your gallery to set as your profile picture. Make sure it\'s clear and represents you well.';
+
+  @override
+  String get continueText => 'Continue';
+
+  @override
+  String get photoUploadSuccess => 'Photo uploaded successfully!';
+
+  @override
+  String get errorImagePicker => 'Could not select image. Please try again.';
 }

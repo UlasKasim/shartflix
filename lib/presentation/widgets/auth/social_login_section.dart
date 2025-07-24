@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shartflix/core/constants/constants.dart';
-import 'package:shartflix/core/services/social_login_service.dart';
+import 'package:shartflix/core/services/services.dart';
 import 'package:shartflix/presentation/blocs/blocs.dart';
 
 import 'social_login_button.dart';

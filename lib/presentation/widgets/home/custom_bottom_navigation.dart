@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shartflix/presentation/blocs/common/navigation_cubit.dart';
 
-import '../../../core/theme/app_theme.dart';
-import '../../../core/constants/asset_constants.dart';
-import '../../../core/extensions/localization_extension.dart';
-import '../../routes/app_router.dart';
+import 'package:shartflix/core/constants/constants.dart';
+import 'package:shartflix/core/extensions/extensions.dart';
+import 'package:shartflix/core/theme/theme.dart';
+import 'package:shartflix/presentation/blocs/blocs.dart';
+import 'package:shartflix/presentation/routes/routes.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   const CustomBottomNavigation({super.key});
@@ -97,13 +97,9 @@ class CustomBottomNavigation extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 label,
-                style: const TextStyle(
-                  fontFamily: AssetConstants.fontEuclidCircularA,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  height: 1.0,
-                ),
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontSize: 12,
+                    ),
               ),
             ],
           ),

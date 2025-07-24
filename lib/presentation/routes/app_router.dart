@@ -3,19 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shartflix/core/injection/injection_container.dart';
 import 'package:shartflix/core/services/navigation_service.dart';
-
-import '../blocs/auth/auth_bloc.dart';
-import '../pages/auth/login_page.dart';
-import '../pages/auth/register_page.dart';
-import '../pages/home/main_page.dart';
-import '../pages/home/home_page.dart';
-import '../pages/profile/profile_page.dart';
+import 'package:shartflix/presentation/blocs/blocs.dart';
+import 'package:shartflix/presentation/pages/pages.dart';
 
 class RouteNames {
   static const String login = 'login';
   static const String register = 'register';
   static const String home = 'home';
   static const String profile = 'profile';
+  static const String photoUpload = 'photo_upload';
   static const String favorites = 'favorites';
 }
 
@@ -24,6 +20,7 @@ class AppRouter {
   static const String register = '/${RouteNames.register}';
   static const String home = '/${RouteNames.home}';
   static const String profile = '/${RouteNames.profile}';
+  static const String photoUpload = '/${RouteNames.photoUpload}';
   static const String favorites = '/${RouteNames.favorites}';
 
   static final GoRouter router = GoRouter(
@@ -67,6 +64,31 @@ class AppRouter {
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             // Register animasyonu (sağdan gelen)
             const begin = Offset(1.0, 0.0); // Geldiği yer (sağ)
+            const end = Offset.zero;
+            const curve = Curves.easeInOutCubic;
+
+            var tween = Tween(begin: begin, end: end).chain(
+              CurveTween(curve: curve),
+            );
+
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        ),
+      ),
+
+      // Photo Upload Route
+      GoRoute(
+        path: photoUpload,
+        name: 'photo_upload',
+        pageBuilder: (context, state) => CustomTransitionPage<void>(
+          key: state.pageKey,
+          child: const PhotoUploadPage(),
+          transitionDuration: const Duration(milliseconds: 300),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const begin = Offset(1.0, 0.0);
             const end = Offset.zero;
             const curve = Curves.easeInOutCubic;
 

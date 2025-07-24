@@ -3,11 +3,8 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../domain/entities/movie_entity.dart';
-import '../../../domain/usecases/movie/get_movies_usecase.dart';
-import '../../../domain/usecases/movie/get_favorite_movies_usecase.dart';
-import '../../../domain/usecases/movie/toggle_favorite_movie_usecase.dart';
-import '../../../domain/usecases/usecase.dart';
+import 'package:shartflix/domain/entities/entities.dart';
+import 'package:shartflix/domain/usecases/usecases.dart';
 
 // Movie Events
 abstract class MovieEvent extends Equatable {

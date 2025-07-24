@@ -84,14 +84,11 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
                     // Title
                     Text(
                       context.l10n.limitedOffer,
-                      style: const TextStyle(
-                        fontFamily: AssetConstants.fontEuclidCircularA,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        height: 1.0,
-                        letterSpacing: 0,
-                      ),
+                      style:
+                          Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                fontSize: 20,
+                                letterSpacing: 0,
+                              ),
                     ),
 
                     const SizedBox(height: 4),
@@ -99,14 +96,10 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
                     // Description
                     Text(
                       context.l10n.limitedOfferDescription,
-                      style: const TextStyle(
-                        fontFamily: AssetConstants.fontEuclidCircularA,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                        height: 1.5,
-                        letterSpacing: 0,
-                      ),
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            color: Colors.white,
+                            letterSpacing: 0,
+                          ),
                       textAlign: TextAlign.center,
                     ),
 
@@ -120,14 +113,7 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
                     // Token Package Selection Prompt
                     Text(
                       context.l10n.selectTokenPackage,
-                      style: const TextStyle(
-                        fontFamily: AssetConstants.fontEuclidCircularA,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                        height: 1.0,
-                        letterSpacing: 0,
-                      ),
+                      style: Theme.of(context).textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                     ),
 
@@ -175,14 +161,7 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
           // Bonuses Title
           Text(
             context.l10n.bonusesTitle,
-            style: const TextStyle(
-              fontFamily: AssetConstants.fontEuclidCircularA,
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
-              height: 1.0,
-              letterSpacing: 0,
-            ),
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
 
           const SizedBox(height: 24),
@@ -253,14 +232,9 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
           const SizedBox(height: 12),
           Text(
             title,
-            style: const TextStyle(
-              fontFamily: AssetConstants.fontEuclidCircularA,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
-              height: 1.5,
-              letterSpacing: 0,
-            ),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  color: Colors.white,
+                ),
             textAlign: TextAlign.center,
           ),
         ],
@@ -343,63 +317,44 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
               const SizedBox(height: 24),
               Text(
                 oldAmount,
-                style: const TextStyle(
-                  fontFamily: AssetConstants.fontEuclidCircularA,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  height: 1.0,
-                  decoration: TextDecoration.lineThrough,
-                  decorationColor: Colors.white,
-                ),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      decoration: TextDecoration.lineThrough,
+                      decorationColor: Colors.white,
+                    ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 4),
               Text(
                 newAmount,
-                style: const TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontSize: 24,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.white,
-                  height: 1.0,
-                ),
+                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                      fontFamily: AssetConstants.montserrat,
+                      fontWeight: FontWeight.w900,
+                    ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 4),
               Text(
                 context.l10n.tokenLabel,
-                style: const TextStyle(
-                  fontFamily: AssetConstants.fontEuclidCircularA,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  height: 1.0,
-                ),
+                style: Theme.of(context).textTheme.titleMedium,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32),
               Text(
                 price,
-                style: const TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.white,
-                  height: 1.0,
-                ),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontFamily: AssetConstants.montserrat,
+                      fontWeight: FontWeight.w900,
+                    ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 4),
               Text(
                 subtitle,
-                style: const TextStyle(
-                  fontFamily: AssetConstants.fontEuclidCircularA,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
-                  height: 1.1,
-                ),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontSize: 10,
+                      color: Colors.white,
+                      height: 1.1,
+                    ),
                 textAlign: TextAlign.center,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -447,13 +402,9 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
               child: Center(
                 child: Text(
                   percentage,
-                  style: const TextStyle(
-                    fontFamily: AssetConstants.fontEuclidCircularA,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
-                    height: 1.0,
-                  ),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Colors.white,
+                      ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -481,13 +432,7 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
         ),
         child: Text(
           context.l10n.viewAllTokens,
-          style: const TextStyle(
-            fontFamily: AssetConstants.fontEuclidCircularA,
-            fontSize: 15,
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
-            height: 1.0,
-          ),
+          style: Theme.of(context).textTheme.headlineMedium,
           textAlign: TextAlign.center,
         ),
       ),

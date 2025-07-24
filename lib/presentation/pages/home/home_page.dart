@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/extensions/localization_extension.dart';
-import '../../../core/services/navigation_service.dart';
-import '../../../core/injection/injection_container.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../blocs/movie/movie_bloc.dart';
-import '../../widgets/home/featured_movie_section.dart';
+import 'package:shartflix/core/core.dart';
+import 'package:shartflix/presentation/blocs/blocs.dart';
+import 'package:shartflix/presentation/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

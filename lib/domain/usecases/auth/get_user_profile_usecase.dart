@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
-
-import '../../../core/error/failures.dart';
-import '../../entities/user_entity.dart';
-import '../../repositories/auth_repository.dart';
-import '../usecase.dart';
+import 'package:shartflix/core/error/error.dart';
+import 'package:shartflix/domain/entities/entities.dart';
+import 'package:shartflix/domain/repositories/repositories.dart';
+import 'package:shartflix/domain/usecases/usecases.dart';
 
 class GetUserProfileUseCase implements UseCase<UserEntity, NoParams> {
   final AuthRepository repository;

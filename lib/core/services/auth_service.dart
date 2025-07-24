@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import '../constants/app_constants.dart';
-import 'storage_service.dart';
+import 'package:shartflix/core/constants/constants.dart';
+import 'package:shartflix/core/services/services.dart';
 
 class AuthService {
   final StorageService _storageService;

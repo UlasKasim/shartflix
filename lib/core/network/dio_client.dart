@@ -1,11 +1,8 @@
 import 'package:dio/dio.dart';
-
-import '../constants/app_constants.dart';
-import '../injection/injection_container.dart';
-import '../services/auth_service.dart';
-import '../services/logger_service.dart';
-import 'auth_interceptor.dart';
-import 'logging_interceptor.dart';
+import 'package:shartflix/core/constants/constants.dart';
+import 'package:shartflix/core/injection/injection_container.dart';
+import 'package:shartflix/core/network/network.dart';
+import 'package:shartflix/core/services/services.dart';
 
 class DioClient {
   static Dio createDio() {

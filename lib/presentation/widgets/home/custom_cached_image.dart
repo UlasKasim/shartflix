@@ -36,7 +36,7 @@ class CustomCachedImage extends StatelessWidget {
       fit: fit ?? BoxFit.cover,
       placeholder: (context, url) => placeholder ?? _buildDefaultPlaceholder(),
       errorWidget: (context, url, error) =>
-          errorWidget ?? _buildDefaultErrorWidget(),
+          errorWidget ?? _buildDefaultErrorWidget(context),
     );
 
     if (borderRadius != null) {
@@ -61,7 +61,7 @@ class CustomCachedImage extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultErrorWidget() {
+  Widget _buildDefaultErrorWidget(BuildContext context) {
     return Container(
       width: width,
       height: height,
@@ -76,12 +76,12 @@ class CustomCachedImage extends StatelessWidget {
           ),
           if (height == null || height! >= 100) ...[
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'Image not available',
-              style: TextStyle(
-                color: Colors.white54,
-                fontSize: 12,
-              ),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontSize: 12,
+                    color: Colors.white54,
+                  ),
               textAlign: TextAlign.center,
             ),
           ],
@@ -135,11 +135,10 @@ class FallbackImage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Text(
                 text!,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontSize: 12,
+                      color: Colors.white54,
+                    ),
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

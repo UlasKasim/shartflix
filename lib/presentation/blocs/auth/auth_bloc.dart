@@ -2,14 +2,9 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-
-import '../../../domain/entities/user_entity.dart';
-import '../../../domain/usecases/auth/login_usecase.dart';
-import '../../../domain/usecases/auth/register_usecase.dart';
-import '../../../domain/usecases/auth/get_user_profile_usecase.dart';
-import '../../../domain/usecases/auth/logout_usecase.dart';
-import '../../../domain/usecases/usecase.dart';
-import '../../../core/services/auth_service.dart';
+import 'package:shartflix/core/services/services.dart';
+import 'package:shartflix/domain/entities/entities.dart';
+import 'package:shartflix/domain/usecases/usecases.dart';
 
 // Auth Events
 abstract class AuthEvent extends Equatable {

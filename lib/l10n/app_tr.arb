@@ -65,7 +65,6 @@
     "loginSuccess": "Giriş başarılı",
     "registerSuccess": "Kayıt başarılı",
     "logoutSuccess": "Çıkış başarılı",
-    "photoUploadSuccess": "Fotoğraf yüklendi",
     "errorNetwork": "İnternet bağlantınızı kontrol edin",
     "errorServer": "Sunucu hatası. Lütfen daha sonra tekrar deneyin",
     "errorInvalidCredentials": "Geçersiz kullanıcı adı veya şifre",
@@ -118,5 +117,10 @@
     "moreLikes": "Daha\nFazla Beğeni",
     "perWeek": "Başına haftalık",
     "viewAllTokens": "Tüm Jetonları Gör",
-    "tokenLabel": "Jeton"
+    "tokenLabel": "Jeton",
+    "uploadYourPhotos": "Fotoğraflarınızı Yükleyin",
+    "photoUploadDescription": "Profil fotoğrafınız olarak kullanmak üzere galerinizden bir fotoğraf seçin. Net ve sizi iyi temsil eden bir fotoğraf seçtiğinizden emin olun.",
+    "continueText": "Devam Et",
+    "photoUploadSuccess": "Fotoğraf başarıyla yüklendi!",
+    "errorImagePicker": "Görsel seçilemedi. Lütfen tekrar deneyin."
 }

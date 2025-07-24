@@ -1,8 +1,6 @@
 import 'package:shartflix/core/extensions/localization_extension.dart';
-
-import '../injection/injection_container.dart';
-import 'logger_service.dart';
-import 'navigation_service.dart';
+import 'package:shartflix/core/injection/injection.dart';
+import 'package:shartflix/core/services/services.dart';
 
 enum SocialLoginType { google, apple, facebook }
 
