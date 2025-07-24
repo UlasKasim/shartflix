@@ -5,12 +5,12 @@ part 'user_profile_response.g.dart';
 @JsonSerializable()
 class UserProfileResponse {
   @JsonKey(name: '_id')
-  final String? id; // Nullable
-  final String? name; // Nullable
-  final String? email; // Nullable
+  final String? id;
+  final String? name;
+  final String? email;
   @JsonKey(includeIfNull: false)
-  final String? photoUrl; // Nullable to handle "" or null
-  final String? token; // Nullable
+  final String? photoUrl;
+  final String? token;
 
   const UserProfileResponse({
     this.id,

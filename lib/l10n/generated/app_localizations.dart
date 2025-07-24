@@ -365,11 +365,11 @@ abstract class AppLocalizations {
   /// **'Change Photo'**
   String get changePhoto;
 
-  /// Upload photo button text
+  /// Add photo button text
   ///
   /// In en, this message translates to:
-  /// **'Upload Photo'**
-  String get uploadPhoto;
+  /// **'Add Photo'**
+  String get addPhoto;
 
   /// Camera option text
   ///

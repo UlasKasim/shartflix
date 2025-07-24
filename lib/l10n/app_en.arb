@@ -180,9 +180,9 @@
     "@changePhoto": {
         "description": "Change photo button text"
     },
-    "uploadPhoto": "Upload Photo",
-    "@uploadPhoto": {
-        "description": "Upload photo button text"
+    "addPhoto": "Add Photo",
+    "@addPhoto": {
+        "description": "Add photo button text"
     },
     "camera": "Camera",
     "@camera": {

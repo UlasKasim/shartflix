@@ -144,7 +144,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get changePhoto => 'Fotoğraf Değiştir';
 
   @override
-  String get uploadPhoto => 'Fotoğraf Yükle';
+  String get addPhoto => 'Fotoğraf Ekle';
 
   @override
   String get camera => 'Kamera';

@@ -21,7 +21,7 @@ class LoggerService {
     );
   }
 
-  // Debug logs (only in debug mode)
+  // Debug logs
   void d(String message, [dynamic error, StackTrace? stackTrace]) {
     _logger.d(message, error: error, stackTrace: stackTrace);
     dev.log(

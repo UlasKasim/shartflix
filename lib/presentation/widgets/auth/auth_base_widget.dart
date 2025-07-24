@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shartflix/presentation/blocs/blocs.dart';
+import 'package:shartflix/presentation/widgets/common/common.dart';
 
 import '../../../core/theme/app_theme.dart';
 import 'social_login_section.dart';
@@ -118,45 +119,10 @@ class AuthBaseWidget extends StatelessWidget {
                       ),
 
                       // Main Button
-                      SizedBox(
-                        width: double.infinity,
-                        height: isSmallScreen ? 48 : 52,
-                        child: ElevatedButton(
-                          onPressed: isLoading ? null : onMainButtonPressed,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppTheme.primaryRed,
-                            foregroundColor: AppTheme.textPrimary,
-                            elevation: 0,
-                            shadowColor: Colors.transparent,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: AppBorderRadius.loginButton,
-                            ),
-                            padding: EdgeInsets.zero,
-                          ),
-                          child: isLoading
-                              ? SizedBox(
-                                  width: isSmallScreen ? 18 : 20,
-                                  height: isSmallScreen ? 18 : 20,
-                                  child: const CircularProgressIndicator(
-                                    strokeWidth: 2,
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      AppTheme.textPrimary,
-                                    ),
-                                  ),
-                                )
-                              : Text(
-                                  mainButtonText,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(
-                                        color: AppTheme.textPrimary,
-                                        fontSize: isSmallScreen ? 14 : 15,
-                                        fontWeight: FontWeight.w500,
-                                        height: 1.0,
-                                      ),
-                                ),
-                        ),
+                      PrimaryButton.auth(
+                        text: mainButtonText,
+                        onPressed: onMainButtonPressed,
+                        isLoading: isLoading,
                       ),
 
                       // Social login spacing - responsive ve dengeli

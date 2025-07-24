@@ -60,21 +60,6 @@ class SocialLoginService {
     }
   }
 
-  Future<void> registerWithGoogle() async {
-    // Same implementation as login - Firebase handles this automatically
-    return await loginWithGoogle();
-  }
-
-  Future<void> registerWithApple() async {
-    // Same implementation as login - Firebase handles this automatically
-    return await loginWithApple();
-  }
-
-  Future<void> registerWithFacebook() async {
-    // Same implementation as login - Firebase handles this automatically
-    return await loginWithFacebook();
-  }
-
   Future<void> handleSocialLogin(SocialLoginType type) async {
     switch (type) {
       case SocialLoginType.google:

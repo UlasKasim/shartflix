@@ -165,8 +165,7 @@ class NavigationService {
           ? SnackBarAction(
               label: actionLabel,
               onPressed: onActionPressed ?? () {},
-              textColor: Colors.white,
-            )
+              textColor: AppTheme.textPrimary)
           : null,
     );
 

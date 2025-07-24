@@ -56,9 +56,9 @@ class ProfileHeader extends StatelessWidget {
         width: 44,
         height: 44,
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.1),
+          color: AppTheme.textPrimary.withValues(alpha: 0.1),
           border: Border.all(
-            color: Colors.white.withValues(alpha: 0.2),
+            color: AppTheme.textPrimary.withValues(alpha: 0.2),
             width: 1,
           ),
           shape: BoxShape.circle,
@@ -69,7 +69,7 @@ class ProfileHeader extends StatelessWidget {
             width: 15,
             height: 12,
             colorFilter: const ColorFilter.mode(
-              Colors.white,
+              AppTheme.textPrimary,
               BlendMode.srcIn,
             ),
           ),
@@ -79,41 +79,57 @@ class ProfileHeader extends StatelessWidget {
   }
 
   Widget _buildLimitedOfferButton(BuildContext context) {
-    return GestureDetector(
-      onTap: onOfferTap ??
-          () {
-            sl<NavigationService>().pushBottomSheetOverlay(
-              const LimitedOfferBottomSheet(),
-            );
-          },
-      child: Container(
-        height: 33,
-        decoration: BoxDecoration(
-          color: AppTheme.primaryRed,
-          borderRadius: BorderRadius.circular(53),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const SizedBox(width: 10),
-            SvgPicture.asset(
-              AssetConstants.iconOffer,
-              width: 18,
-              height: 18,
-              colorFilter: const ColorFilter.mode(
-                Colors.white,
-                BlendMode.srcIn,
-              ),
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isTablet = screenWidth > 600;
+
+    return Align(
+      alignment: Alignment.centerRight,
+      child: GestureDetector(
+        onTap: onOfferTap ??
+            () {
+              sl<NavigationService>().pushBottomSheetOverlay(
+                const LimitedOfferBottomSheet(),
+              );
+            },
+        child: Container(
+          height: 33,
+          width: isTablet ? 120 : null,
+          constraints: isTablet
+              ? null
+              : const BoxConstraints(minWidth: 80, maxWidth: 120),
+          decoration: BoxDecoration(
+            color: AppTheme.primaryRed,
+            borderRadius: BorderRadius.circular(53),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: isTablet ? 0 : 10,
             ),
-            const SizedBox(width: 4),
-            Text(
-              context.l10n.limitedOffer,
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    fontFamily: AssetConstants.montserrat,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  AssetConstants.iconOffer,
+                  width: 18,
+                  height: 18,
+                  colorFilter: const ColorFilter.mode(
+                    AppTheme.textPrimary,
+                    BlendMode.srcIn,
                   ),
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  context.l10n.limitedOffer,
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        fontFamily: AssetConstants.montserrat,
+                        color: AppTheme.textPrimary,
+                      ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

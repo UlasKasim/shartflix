@@ -22,9 +22,7 @@ class ProfileInfoSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<ProfileBloc, ProfileState>(
       listener: (context, profileState) {
-        // ✨ Listen to photo upload success and refresh AuthBloc
         if (profileState is ProfilePhotoUploadSuccess) {
-          // Trigger AuthBloc to refresh user profile
           context.read<AuthBloc>().add(AuthUserProfileRequested());
         }
       },
@@ -113,7 +111,11 @@ class ProfileInfoSection extends StatelessWidget {
 
   Widget _buildUploadButton(BuildContext context) {
     return PrimaryButton.small(
-      text: context.l10n.uploadPhoto,
+      text: context.l10n.addPhoto,
+      textStyle: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            fontSize: 13,
+            fontWeight: FontWeight.w700,
+          ),
       onPressed: () {
         context.pushNamed(RouteNames.photoUpload);
       },

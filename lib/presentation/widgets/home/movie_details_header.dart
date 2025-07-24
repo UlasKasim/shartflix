@@ -44,9 +44,7 @@ class MovieDetailsHeader extends StatelessWidget {
               Text(
                 movie.title,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                    fontWeight: FontWeight.bold, color: AppTheme.textPrimary),
               ),
 
               const SizedBox(height: 8),

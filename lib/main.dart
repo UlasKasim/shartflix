@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart'; // Added
 
-// Bu import'u ekle - flutterfire configure tarafından oluşturulan dosya
 import 'firebase_options.dart';
 
 import 'core/injection/injection_container.dart';
@@ -16,7 +15,7 @@ import 'core/services/auth_service.dart';
 import 'sinflix_app.dart';
 
 Future<void> main() async {
-  // Native splash'i koru
+  // Native splash
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 

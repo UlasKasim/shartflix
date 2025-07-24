@@ -71,7 +71,7 @@ class _PhotoUploadPageState extends State<PhotoUploadPage> {
               context.l10n.photoUploadSuccess,
               type: SnackBarType.success,
             );
-            context.pop(); // Now this will work because we used pushNamed
+            context.pop();
           } else if (state is ProfilePhotoUploadError) {
             sl<NavigationService>().showSnackBar(
               state.message,
@@ -90,12 +90,11 @@ class _PhotoUploadPageState extends State<PhotoUploadPage> {
                   onBackPressed: () => context.pop(),
                 ),
 
-                const Spacer(flex: 1),
+                const SizedBox(height: 30),
 
                 // Content
                 Column(
                   children: [
-                    // Title
                     Text(
                       context.l10n.uploadYourPhotos,
                       style:
@@ -106,10 +105,7 @@ class _PhotoUploadPageState extends State<PhotoUploadPage> {
                               ),
                       textAlign: TextAlign.center,
                     ),
-
                     const SizedBox(height: 8),
-
-                    // Description
                     Text(
                       context.l10n.photoUploadDescription,
                       style:
@@ -120,9 +116,7 @@ class _PhotoUploadPageState extends State<PhotoUploadPage> {
                               ),
                       textAlign: TextAlign.center,
                     ),
-
                     const SizedBox(height: 48),
-
                     // Photo Upload Area
                     PhotoUploadArea(
                       selectedImagePath: _selectedImagePath,
@@ -131,7 +125,7 @@ class _PhotoUploadPageState extends State<PhotoUploadPage> {
                   ],
                 ),
 
-                const Spacer(flex: 3),
+                const Spacer(),
 
                 // Continue Button
                 BlocBuilder<ProfileBloc, ProfileState>(

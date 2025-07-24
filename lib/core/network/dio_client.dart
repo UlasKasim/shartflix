@@ -13,7 +13,7 @@ class DioClient {
         receiveTimeout: AppConstants.receiveTimeout,
         sendTimeout: AppConstants.connectionTimeout,
         headers: {
-          // 'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
         responseType: ResponseType.json,

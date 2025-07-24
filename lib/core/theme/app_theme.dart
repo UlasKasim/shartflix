@@ -179,40 +179,44 @@ class AppTheme {
           fontSize: 32,
           fontWeight: FontWeight.bold,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
         ),
         displayMedium: TextStyle(
           color: textPrimary,
           fontSize: 28,
           fontWeight: FontWeight.bold,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
         ),
         displaySmall: TextStyle(
           color: textPrimary,
           fontSize: 24,
           fontWeight: FontWeight.w600,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
         ),
         headlineLarge: TextStyle(
           color: textPrimary,
           fontSize: 18,
           fontWeight: FontWeight.w600,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
           height: 1.0,
         ),
         headlineMedium: TextStyle(
-          // Button text için
           color: textPrimary,
           fontSize: 15,
           fontWeight: FontWeight.w500,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
           height: 1.0,
         ),
         headlineSmall: TextStyle(
-          // Description için
           color: textPrimary,
           fontSize: 13,
           fontWeight: FontWeight.w400,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
           height: 1.0,
         ),
         titleLarge: TextStyle(
@@ -220,19 +224,21 @@ class AppTheme {
           fontSize: 16,
           fontWeight: FontWeight.w600,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
         ),
         titleMedium: TextStyle(
           color: textPrimary,
           fontSize: 14,
           fontWeight: FontWeight.w500,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
         ),
         titleSmall: TextStyle(
-          // Hint text ve küçük text'ler için
           color: textSecondary,
           fontSize: 12,
           fontWeight: FontWeight.w400,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
           height: 1.5,
         ),
         bodyLarge: TextStyle(
@@ -240,18 +246,21 @@ class AppTheme {
           fontSize: 16,
           fontWeight: FontWeight.normal,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
         ),
         bodyMedium: TextStyle(
           color: textSecondary,
           fontSize: 14,
           fontWeight: FontWeight.normal,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
         ),
         bodySmall: TextStyle(
           color: textHint,
           fontSize: 12,
           fontWeight: FontWeight.normal,
           fontFamily: AssetConstants.fontEuclidCircularA,
+          letterSpacing: 0,
         ),
       ),
 
@@ -309,18 +318,4 @@ class AppShadows {
       offset: Offset(0, 6),
     ),
   ];
-}
-
-// Custom Border Radius
-class AppBorderRadius {
-  static const BorderRadius small = BorderRadius.all(Radius.circular(4));
-  static const BorderRadius medium = BorderRadius.all(Radius.circular(8));
-  static const BorderRadius large = BorderRadius.all(Radius.circular(12));
-  static const BorderRadius extraLarge = BorderRadius.all(Radius.circular(16));
-  static const BorderRadius circular = BorderRadius.all(Radius.circular(50));
-
-  // Login Design Specific
-  static const BorderRadius loginTextField =
-      BorderRadius.all(Radius.circular(18));
-  static const BorderRadius loginButton = BorderRadius.all(Radius.circular(18));
 }

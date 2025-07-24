@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shartflix/core/theme/theme.dart';
 
 import '../../../core/constants/asset_constants.dart';
 
@@ -30,9 +31,9 @@ class PhotoUploadHeader extends StatelessWidget {
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.1),
+                    color: AppTheme.textPrimary.withValues(alpha: 0.1),
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.2),
+                      color: AppTheme.textPrimary.withValues(alpha: 0.2),
                       width: 1,
                     ),
                     shape: BoxShape.circle,
@@ -43,7 +44,7 @@ class PhotoUploadHeader extends StatelessWidget {
                       width: 15,
                       height: 12,
                       colorFilter: const ColorFilter.mode(
-                        Colors.white,
+                        AppTheme.textPrimary,
                         BlendMode.srcIn,
                       ),
                     ),

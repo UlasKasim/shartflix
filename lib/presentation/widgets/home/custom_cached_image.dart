@@ -26,7 +26,6 @@ class CustomCachedImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Sadece HTTP'yi HTTPS'e çevir
     final String secureUrl = imageUrl.replaceFirst('http://', 'https://');
 
     Widget imageWidget = CachedNetworkImage(

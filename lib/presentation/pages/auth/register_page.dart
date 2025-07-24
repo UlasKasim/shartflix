@@ -194,31 +194,34 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget _buildTermsAndConditions(BuildContext context) {
     return GestureDetector(
       onTap: _onTermsPressed,
-      child: RichText(
-        textAlign: TextAlign.left,
-        text: TextSpan(
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                color: AppTheme.transparent50White,
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                height: 1.5,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: RichText(
+          textAlign: TextAlign.left,
+          text: TextSpan(
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  color: AppTheme.transparent50White,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  height: 1.5,
+                ),
+            children: [
+              TextSpan(
+                text: context.l10n.termsPrefix,
               ),
-          children: [
-            TextSpan(
-              text: context.l10n.termsPrefix,
-            ),
-            TextSpan(
-              text: context.l10n.termsLinkText,
-              style: const TextStyle(
-                decoration: TextDecoration.underline,
-                decorationColor: AppTheme.textPrimary,
-                color: AppTheme.textPrimary,
+              TextSpan(
+                text: context.l10n.termsLinkText,
+                style: const TextStyle(
+                  decoration: TextDecoration.underline,
+                  decorationColor: AppTheme.textPrimary,
+                  color: AppTheme.textPrimary,
+                ),
               ),
-            ),
-            TextSpan(
-              text: context.l10n.termsSuffix,
-            ),
-          ],
+              TextSpan(
+                text: context.l10n.termsSuffix,
+              ),
+            ],
+          ),
         ),
       ),
     );

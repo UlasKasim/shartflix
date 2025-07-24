@@ -4,6 +4,7 @@ import '../../../core/theme/app_theme.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
+  final TextStyle? textStyle;
   final VoidCallback? onPressed;
   final bool isLoading;
   final bool isEnabled;
@@ -19,6 +20,7 @@ class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,
     required this.text,
+    this.textStyle,
     this.onPressed,
     this.isLoading = false,
     this.isEnabled = true,
@@ -53,11 +55,13 @@ class PrimaryButton extends StatelessWidget {
   factory PrimaryButton.small({
     required String text,
     required VoidCallback onPressed,
+    TextStyle? textStyle,
     bool isLoading = false,
     bool isEnabled = true,
   }) {
     return PrimaryButton(
       text: text,
+      textStyle: textStyle,
       onPressed: onPressed,
       isLoading: isLoading,
       isEnabled: isEnabled,
@@ -70,11 +74,13 @@ class PrimaryButton extends StatelessWidget {
   factory PrimaryButton.bottomSheet({
     required String text,
     required VoidCallback onPressed,
+    TextStyle? textStyle,
     bool isLoading = false,
     bool isEnabled = true,
   }) {
     return PrimaryButton(
       text: text,
+      textStyle: textStyle,
       onPressed: onPressed,
       isLoading: isLoading,
       isEnabled: isEnabled,
@@ -110,12 +116,13 @@ class PrimaryButton extends StatelessWidget {
               ],
               Text(
                 text,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: textColor ?? AppTheme.textPrimary,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      height: 1.0,
-                    ),
+                style: textStyle ??
+                    Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          color: textColor ?? AppTheme.textPrimary,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          height: 1.0,
+                        ),
               ),
             ],
           );

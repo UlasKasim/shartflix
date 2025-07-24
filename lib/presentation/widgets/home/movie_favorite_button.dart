@@ -30,7 +30,7 @@ class MovieFavoriteButton extends StatelessWidget {
               color: Colors.black.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: Colors.white.withValues(alpha: 0.2),
+                color: AppTheme.textPrimary.withValues(alpha: 0.2),
                 width: 1,
               ),
             ),
@@ -48,7 +48,7 @@ class MovieFavoriteButton extends StatelessWidget {
                       width: 24,
                       height: 24,
                       colorFilter: ColorFilter.mode(
-                        isFavorite ? AppTheme.primaryRed : Colors.white,
+                        isFavorite ? AppTheme.primaryRed : AppTheme.textPrimary,
                         BlendMode.srcIn,
                       ),
                     ),

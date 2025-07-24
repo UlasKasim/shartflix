@@ -5,12 +5,12 @@ part 'login_response.g.dart';
 @JsonSerializable()
 class LoginResponse {
   @JsonKey(name: '_id')
-  final String? id; // Nullable
-  final String? name; // Nullable
-  final String? email; // Nullable
+  final String? id;
+  final String? name;
+  final String? email;
   @JsonKey(includeIfNull: false)
-  final String? photoUrl; // Nullable to handle "" or null
-  final String? token; // Nullable
+  final String? photoUrl;
+  final String? token;
 
   const LoginResponse({
     this.id,
@@ -21,8 +21,7 @@ class LoginResponse {
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseFromJson(
-          json['data'] as Map<String, dynamic>); // Map from 'data'
+      _$LoginResponseFromJson(json['data'] as Map<String, dynamic>);
 
   Map<String, dynamic> toJson() => _$LoginResponseToJson(this);
 }

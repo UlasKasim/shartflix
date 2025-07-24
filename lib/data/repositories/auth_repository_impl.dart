@@ -74,7 +74,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
       // Save auth data
       await _authService.saveAuthData(
-        accessToken: response.token ?? '', // Fallback
+        accessToken: response.token ?? '',
         userData: {
           'id': response.id ?? '',
           'name': response.name ?? '',
@@ -84,11 +84,11 @@ class AuthRepositoryImpl implements AuthRepository {
       );
 
       final authEntity = AuthEntity(
-        token: response.token ?? '', // Fallback
+        token: response.token ?? '',
         user: UserEntity(
-          id: response.id ?? '', // Fallback
-          name: response.name ?? '', // Fallback
-          email: response.email ?? '', // Fallback
+          id: response.id ?? '',
+          name: response.name ?? '',
+          email: response.email ?? '',
           photoUrl: response.photoUrl,
         ),
       );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shartflix/core/extensions/localization_extension.dart';
 import 'package:shartflix/core/theme/app_theme.dart';
+import 'package:shartflix/presentation/widgets/widgets.dart';
 import 'dart:ui';
 
 import '../../../core/constants/asset_constants.dart';
@@ -97,7 +98,7 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
                     Text(
                       context.l10n.limitedOfferDescription,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            color: Colors.white,
+                            color: AppTheme.textPrimary,
                             letterSpacing: 0,
                           ),
                       textAlign: TextAlign.center,
@@ -144,15 +145,15 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.1),
+          color: AppTheme.textPrimary.withValues(alpha: 0.1),
           width: 1,
         ),
         gradient: RadialGradient(
           center: Alignment.center,
           radius: 1.0,
           colors: [
-            Colors.white.withValues(alpha: 0.1),
-            Colors.white.withValues(alpha: 0.03),
+            AppTheme.textPrimary.withValues(alpha: 0.1),
+            AppTheme.textPrimary.withValues(alpha: 0.03),
           ],
         ),
       ),
@@ -195,18 +196,18 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: Colors.white,
+                color: AppTheme.textPrimary,
                 width: 0.0,
               ),
               boxShadow: const [
                 BoxShadow(
-                  color: Colors.white,
+                  color: AppTheme.textPrimary,
                   blurRadius: 9,
                   spreadRadius: -8,
                   offset: Offset(0, 0),
                 ),
                 BoxShadow(
-                  color: Colors.white,
+                  color: AppTheme.textPrimary,
                   blurRadius: 6,
                   spreadRadius: -5,
                   offset: Offset(0, 0),
@@ -232,9 +233,10 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
           const SizedBox(height: 12),
           Text(
             title,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: Colors.white,
-                ),
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall
+                ?.copyWith(color: AppTheme.textPrimary),
             textAlign: TextAlign.center,
           ),
         ],
@@ -304,7 +306,8 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
           padding: const EdgeInsets.fromLTRB(12, 28, 12, 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.4)),
+            border:
+                Border.all(color: AppTheme.textPrimary.withValues(alpha: 0.4)),
             gradient: RadialGradient(
               center: const Alignment(-0.7, -0.7),
               radius: 1.5,
@@ -318,9 +321,8 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
               Text(
                 oldAmount,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      decoration: TextDecoration.lineThrough,
-                      decorationColor: Colors.white,
-                    ),
+                    decoration: TextDecoration.lineThrough,
+                    decorationColor: AppTheme.textPrimary),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 4),
@@ -352,7 +354,7 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
                 subtitle,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 10,
-                      color: Colors.white,
+                      color: AppTheme.textPrimary,
                       height: 1.1,
                     ),
                 textAlign: TextAlign.center,
@@ -375,24 +377,24 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
                 color: badgeColor,
                 borderRadius: BorderRadius.circular(12.5),
                 border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.4),
+                  color: AppTheme.textPrimary.withValues(alpha: 0.4),
                   width: 1,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.white.withValues(alpha: 0.3),
+                    color: AppTheme.textPrimary.withValues(alpha: 0.3),
                     blurRadius: 8.33,
                     spreadRadius: -4,
                     offset: const Offset(0, 0),
                   ),
                   BoxShadow(
-                    color: Colors.white.withValues(alpha: 0.15),
+                    color: AppTheme.textPrimary.withValues(alpha: 0.15),
                     blurRadius: 16,
                     spreadRadius: -8,
                     offset: const Offset(0, 0),
                   ),
                   BoxShadow(
-                    color: Colors.white.withValues(alpha: 0.2),
+                    color: AppTheme.textPrimary.withValues(alpha: 0.2),
                     blurRadius: 8.33,
                     spreadRadius: 0,
                     offset: const Offset(0, 0),
@@ -402,9 +404,10 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
               child: Center(
                 child: Text(
                   percentage,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Colors.white,
-                      ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.copyWith(color: AppTheme.textPrimary),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -416,26 +419,12 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
   }
 
   Widget _buildBottomButton(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFE50914),
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
-          ),
-          elevation: 0,
-        ),
-        child: Text(
-          context.l10n.viewAllTokens,
-          style: Theme.of(context).textTheme.headlineMedium,
-          textAlign: TextAlign.center,
-        ),
-      ),
+    return PrimaryButton.bottomSheet(
+      text: context.l10n.viewAllTokens,
+      textStyle: Theme.of(context).textTheme.headlineMedium,
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
     );
   }
 }

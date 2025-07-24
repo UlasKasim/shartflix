@@ -5,12 +5,12 @@ part 'register_response.g.dart';
 @JsonSerializable()
 class RegisterResponse {
   @JsonKey(name: '_id')
-  final String? id; // Nullable to handle edge cases
-  final String? name; // Nullable
-  final String? email; // Nullable
+  final String? id;
+  final String? name;
+  final String? email;
   @JsonKey(includeIfNull: false)
-  final String? photoUrl; // Nullable to handle "" or null
-  final String? token; // Nullable
+  final String? photoUrl;
+  final String? token;
 
   const RegisterResponse({
     this.id,
@@ -21,8 +21,7 @@ class RegisterResponse {
   });
 
   factory RegisterResponse.fromJson(Map<String, dynamic> json) =>
-      _$RegisterResponseFromJson(
-          json['data'] as Map<String, dynamic>); // Map from 'data'
+      _$RegisterResponseFromJson(json['data'] as Map<String, dynamic>);
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         'data': _$RegisterResponseToJson(this),

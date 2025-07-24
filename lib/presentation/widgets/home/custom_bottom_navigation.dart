@@ -69,12 +69,12 @@ class CustomBottomNavigation extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.33,
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.2),
+          color: AppTheme.textPrimary.withValues(alpha: 0.2),
           width: 1,
         ),
         borderRadius: BorderRadius.circular(20),
         color: isSelected
-            ? Colors.white.withValues(alpha: 0.1)
+            ? AppTheme.textPrimary.withValues(alpha: 0.1)
             : Colors.transparent,
       ),
       child: Material(
@@ -90,7 +90,7 @@ class CustomBottomNavigation extends StatelessWidget {
                 width: 28,
                 height: 28,
                 colorFilter: ColorFilter.mode(
-                  isSelected ? AppTheme.primaryRed : Colors.white,
+                  isSelected ? AppTheme.primaryRed : AppTheme.textPrimary,
                   BlendMode.srcIn,
                 ),
               ),

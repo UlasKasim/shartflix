@@ -39,7 +39,6 @@ class SinflixApp extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         locale: AppLocalizations.supportedLocales
             .firstWhere((l) => l.languageCode == "tr"),
-        // Navigation
         routerConfig: AppRouter.router,
       ),
     );
