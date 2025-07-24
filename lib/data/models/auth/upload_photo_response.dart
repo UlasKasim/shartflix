@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'upload_photo_response.g.dart';
 
-//TODO
 @JsonSerializable()
 class UploadPhotoResponse {
   @JsonKey(name: 'photoUrl')
@@ -13,7 +12,9 @@ class UploadPhotoResponse {
   });
 
   factory UploadPhotoResponse.fromJson(Map<String, dynamic> json) =>
-      _$UploadPhotoResponseFromJson(json);
+      _$UploadPhotoResponseFromJson(json['data'] as Map<String, dynamic>);
 
-  Map<String, dynamic> toJson() => _$UploadPhotoResponseToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'data': _$UploadPhotoResponseToJson(this),
+      };
 }

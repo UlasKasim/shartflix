@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:shartflix/core/error/error.dart';
 import 'package:shartflix/core/network/network.dart';
 import 'package:shartflix/data/models/models.dart';
@@ -77,7 +78,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
             message: 'Selected file does not exist');
       }
 
-      final response = await _apiClient.uploadPhoto(file);
+      // Create UploadPhotoRequest using factory method
+      var filename = file.path.split('/').last;
+      final uploadRequest = await UploadPhotoRequest.fromFilePath(
+        filePath,
+        filename: filename,
+      );
+
+      // Call ApiClient with generated model
+      final response = await _apiClient.uploadPhoto(uploadRequest);
 
       return response.photoUrl;
     } on DioException catch (e) {

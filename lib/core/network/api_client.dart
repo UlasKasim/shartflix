@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:shartflix/data/models/models.dart';
@@ -21,9 +19,10 @@ abstract class ApiClient {
   @GET('/user/profile')
   Future<UserProfileResponse> getUserProfile();
 
-  @POST('/user/upload_photo')
+  // Photo upload - With generated UploadPhotoRequest model
   @MultiPart()
-  Future<UploadPhotoResponse> uploadPhoto(@Part(name: 'file') File file);
+  @POST('/user/upload_photo')
+  Future<UploadPhotoResponse> uploadPhoto(@Body() UploadPhotoRequest request);
 
   // Movie Endpoints
   @GET('/movie/list')
