@@ -96,27 +96,6 @@ class NavigationService {
     );
   }
 
-  // Custom navigation methods for Sinflix
-  void goToLogin() {
-    go('/login');
-  }
-
-  void goToRegister() {
-    go('/register');
-  }
-
-  void goToHome() {
-    go('/home');
-  }
-
-  void goToProfile() {
-    go('/profile');
-  }
-
-  void goToMovieDetail(String movieId) {
-    go('/movie/$movieId');
-  }
-
   // Bottom sheet helpers
   Future<T?> showCustomBottomSheet<T>({
     required Widget child,
