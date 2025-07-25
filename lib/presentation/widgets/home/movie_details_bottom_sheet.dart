@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shartflix/core/extensions/localization_extension.dart';
 import 'package:shartflix/core/theme/theme.dart';
+import 'package:shartflix/core/utils/responsive_helper.dart';
 import 'package:shartflix/domain/entities/entities.dart';
 import 'package:shartflix/presentation/widgets/home/home.dart';
 
@@ -14,38 +15,58 @@ class MovieDetailsBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final r = context.responsive;
+
     return DraggableScrollableSheet(
-      initialChildSize: 0.85,
-      minChildSize: 0.5,
-      maxChildSize: 0.95,
+      initialChildSize: r.responsive(
+        mobile: 0.85,
+        tablet: 0.9,
+        largeTablet: 0.95,
+      ),
+      minChildSize: r.responsive(
+        mobile: 0.5,
+        tablet: 0.6,
+        largeTablet: 0.7,
+      ),
+      maxChildSize: r.responsive(
+        mobile: 0.95,
+        tablet: 0.98,
+        largeTablet: 0.98,
+      ),
       builder: (context, scrollController) {
         return Container(
-          decoration: const BoxDecoration(
+          width: double.infinity, // Full width'i zorla
+          decoration: BoxDecoration(
             color: AppTheme.surfaceDark,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(r.cardBorderRadius + 8),
+            ),
           ),
           child: Column(
             children: [
               // Handle
-              _buildHandle(),
+              _buildHandle(r),
 
               // Content
               Expanded(
                 child: SingleChildScrollView(
                   controller: scrollController,
-                  padding: const EdgeInsets.all(24),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: r.horizontalPadding,
+                    vertical: r.verticalPadding,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Header with poster and basic info
                       MovieDetailsHeader(movie: movie),
 
-                      const SizedBox(height: 24),
+                      SizedBox(height: r.largeSpacing),
 
                       // Description
-                      _buildDescriptionSection(context),
+                      _buildDescriptionSection(context, r),
 
-                      const SizedBox(height: 24),
+                      SizedBox(height: r.largeSpacing),
 
                       // Images Gallery
                       if (movie.images != null && movie.images!.isNotEmpty) ...[
@@ -53,28 +74,28 @@ class MovieDetailsBottomSheet extends StatelessWidget {
                           title: context.l10n.gallery,
                           child: MovieImagesGallery(images: movie.images!),
                         ),
-                        const SizedBox(height: 24),
+                        SizedBox(height: r.largeSpacing),
                       ],
 
                       // Movie Details
-                      _buildMovieDetailsSection(context),
+                      _buildMovieDetailsSection(context, r),
 
-                      const SizedBox(height: 24),
+                      SizedBox(height: r.largeSpacing),
 
                       // Cast & Crew
                       if (_hasCastAndCrew()) ...[
-                        _buildCastAndCrewSection(context),
-                        const SizedBox(height: 24),
+                        _buildCastAndCrewSection(context, r),
+                        SizedBox(height: r.largeSpacing),
                       ],
 
                       // Ratings & Awards
                       if (_hasRatingsAndAwards()) ...[
-                        _buildRatingsAndAwardsSection(context),
-                        const SizedBox(height: 24),
+                        _buildRatingsAndAwardsSection(context, r),
+                        SizedBox(height: r.largeSpacing),
                       ],
 
                       // Bottom padding for safe scrolling
-                      const SizedBox(height: 100),
+                      SizedBox(height: r.extraLargeSpacing + 50),
                     ],
                   ),
                 ),
@@ -86,11 +107,11 @@ class MovieDetailsBottomSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildHandle() {
+  Widget _buildHandle(ResponsiveHelper r) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 12),
-      width: 40,
-      height: 4,
+      margin: EdgeInsets.symmetric(vertical: r.mediumSpacing),
+      width: r.responsive(mobile: 40, tablet: 60),
+      height: r.responsive(mobile: 4, tablet: 6),
       decoration: BoxDecoration(
         color: AppTheme.textPrimary.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(8),
@@ -98,58 +119,60 @@ class MovieDetailsBottomSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildDescriptionSection(BuildContext context) {
+  Widget _buildDescriptionSection(BuildContext context, ResponsiveHelper r) {
     return MovieDetailsSection(
       title: context.l10n.description,
       child: Text(
         movie.description,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: AppTheme.textSecondary,
+              fontSize: r.bodyFontSize,
               height: 1.5,
             ),
       ),
     );
   }
 
-  Widget _buildMovieDetailsSection(BuildContext context) {
+  Widget _buildMovieDetailsSection(BuildContext context, ResponsiveHelper r) {
     return MovieDetailsSection(
       title: context.l10n.movieDetails,
       child: Column(
         children: [
-          _buildDetailRow(context, context.l10n.year, movie.year),
-          _buildDetailRow(context, context.l10n.genre, movie.genre),
+          _buildDetailRow(context, r, context.l10n.year, movie.year),
+          _buildDetailRow(context, r, context.l10n.genre, movie.genre),
           if (movie.runtime != null)
-            _buildDetailRow(context, context.l10n.runtime, movie.runtime!),
+            _buildDetailRow(context, r, context.l10n.runtime, movie.runtime!),
           if (movie.rated != null)
-            _buildDetailRow(context, context.l10n.rated, movie.rated!),
+            _buildDetailRow(context, r, context.l10n.rated, movie.rated!),
           if (movie.language != null)
-            _buildDetailRow(context, context.l10n.language, movie.language!),
+            _buildDetailRow(context, r, context.l10n.language, movie.language!),
           if (movie.country != null)
-            _buildDetailRow(context, context.l10n.country, movie.country!),
+            _buildDetailRow(context, r, context.l10n.country, movie.country!),
           if (movie.released != null)
-            _buildDetailRow(context, context.l10n.released, movie.released!),
+            _buildDetailRow(context, r, context.l10n.released, movie.released!),
         ],
       ),
     );
   }
 
-  Widget _buildCastAndCrewSection(BuildContext context) {
+  Widget _buildCastAndCrewSection(BuildContext context, ResponsiveHelper r) {
     return MovieDetailsSection(
       title: context.l10n.castAndCrew,
       child: Column(
         children: [
           if (movie.director != null)
-            _buildDetailRow(context, context.l10n.director, movie.director!),
+            _buildDetailRow(context, r, context.l10n.director, movie.director!),
           if (movie.writer != null)
-            _buildDetailRow(context, context.l10n.writer, movie.writer!),
+            _buildDetailRow(context, r, context.l10n.writer, movie.writer!),
           if (movie.actors != null)
-            _buildDetailRow(context, context.l10n.cast, movie.actors!),
+            _buildDetailRow(context, r, context.l10n.cast, movie.actors!),
         ],
       ),
     );
   }
 
-  Widget _buildRatingsAndAwardsSection(BuildContext context) {
+  Widget _buildRatingsAndAwardsSection(
+      BuildContext context, ResponsiveHelper r) {
     return MovieDetailsSection(
       title: context.l10n.ratingsAndAwards,
       child: Column(
@@ -157,6 +180,7 @@ class MovieDetailsBottomSheet extends StatelessWidget {
           if (movie.imdbRating != null)
             _buildRatingRow(
               context,
+              r,
               context.l10n.imdbRating,
               movie.imdbRating!,
               movie.imdbVotes,
@@ -164,35 +188,44 @@ class MovieDetailsBottomSheet extends StatelessWidget {
           if (movie.metascore != null)
             _buildDetailRow(
               context,
+              r,
               context.l10n.metascore,
               '${movie.metascore!}/100',
             ),
           if (movie.awards != null)
-            _buildDetailRow(context, context.l10n.awards, movie.awards!),
+            _buildDetailRow(context, r, context.l10n.awards, movie.awards!),
         ],
       ),
     );
   }
 
-  Widget _buildDetailRow(BuildContext context, String label, String value) {
+  Widget _buildDetailRow(
+    BuildContext context,
+    ResponsiveHelper r,
+    String label,
+    String value,
+  ) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: EdgeInsets.only(bottom: r.smallSpacing),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            width: 80,
+            width: r.responsive(mobile: 120, tablet: 150),
             child: Text(
               '$label:',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: AppTheme.textSecondary,
+                    fontSize: r.bodyFontSize,
                   ),
             ),
           ),
           Expanded(
             child: Text(
               value,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontSize: r.bodyFontSize,
+                  ),
             ),
           ),
         ],
@@ -202,45 +235,56 @@ class MovieDetailsBottomSheet extends StatelessWidget {
 
   Widget _buildRatingRow(
     BuildContext context,
+    ResponsiveHelper r,
     String label,
     String rating,
     String? votes,
   ) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: EdgeInsets.only(bottom: r.smallSpacing),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            width: 80,
+            width: r.responsive(mobile: 120, tablet: 150),
             child: Text(
               '$label:',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.w500,
+                    fontSize: r.bodyFontSize,
                   ),
             ),
           ),
           Expanded(
             child: Row(
               children: [
-                const Icon(Icons.star, color: Colors.amber, size: 16),
-                const SizedBox(width: 4),
+                Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                  size: r.mediumIconSize,
+                ),
+                SizedBox(width: r.smallSpacing / 2),
                 Text(
                   rating,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w600,
+                        fontSize: r.bodyFontSize,
                       ),
                 ),
                 Text(
                   '/10',
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontSize: r.captionFontSize,
+                      ),
                 ),
                 if (votes != null) ...[
-                  const SizedBox(width: 8),
+                  SizedBox(width: r.smallSpacing),
                   Flexible(
                     child: Text(
                       '($votes)',
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            fontSize: r.captionFontSize,
+                          ),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

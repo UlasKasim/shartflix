@@ -18,6 +18,7 @@ class LimitedOfferBottomSheet extends StatefulWidget {
 class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: ClipRRect(
@@ -31,10 +32,10 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
               // Top Blur Effect
               Positioned(
                 top: -20,
-                left: MediaQuery.of(context).size.width * 0.25,
+                left: width * 0.25,
                 child: Container(
-                  width: MediaQuery.of(context).size.width * 0.55,
-                  height: MediaQuery.of(context).size.width * 0.55,
+                  width: width * 0.55,
+                  height: width * 0.55,
                   decoration: const BoxDecoration(
                     color: AppTheme.primaryRed,
                     shape: BoxShape.circle,
@@ -54,7 +55,7 @@ class _LimitedOfferBottomSheetState extends State<LimitedOfferBottomSheet> {
               // Bottom Blur Effect
               Positioned(
                 bottom: 20,
-                left: MediaQuery.of(context).size.width * 0.5 - 108,
+                left: width * 0.5 - 108,
                 child: Container(
                   width: 216,
                   height: 216,

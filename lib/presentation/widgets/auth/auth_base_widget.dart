@@ -4,6 +4,7 @@ import 'package:shartflix/presentation/blocs/blocs.dart';
 import 'package:shartflix/presentation/widgets/common/common.dart';
 
 import '../../../core/theme/app_theme.dart';
+import '../../../core/utils/responsive_helper.dart';
 import 'social_login_section.dart';
 
 class AuthBaseWidget extends StatelessWidget {
@@ -34,158 +35,163 @@ class AuthBaseWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-
-    // Screen size based responsive values
-    final isSmallScreen = screenHeight < 700;
+    final r = context.responsive;
 
     return Scaffold(
       backgroundColor: AppTheme.backgroundDark,
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         bottom: false,
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-              padding: EdgeInsets.only(
-                left: isSmallScreen ? 24.0 : 39.0,
-                right: isSmallScreen ? 24.0 : 39.0,
-              ),
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: constraints.maxHeight - 32,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      // Top spacer - responsive
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        height: (isSmallScreen ? 20 : 60),
-                      ),
+        child: r.contentWrapper(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                padding: EdgeInsets.symmetric(horizontal: r.horizontalPadding),
+                child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: r.screenHeight -
+                          MediaQuery.of(context).padding.top -
+                          32,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // Top spacer - responsive
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          height: r.isSmallScreen ? 20 : 60,
+                        ),
 
-                      // Title
-                      Text(
-                        title,
-                        textAlign: TextAlign.center,
-                        style:
-                            Theme.of(context).textTheme.headlineLarge?.copyWith(
-                                  color: AppTheme.textPrimary,
-                                  fontSize: isSmallScreen ? 16 : 18,
-                                  fontWeight: FontWeight.w600,
-                                  height: 1.2,
-                                ),
-                      ),
+                        // Title
+                        Text(
+                          title,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineLarge
+                              ?.copyWith(
+                                color: AppTheme.textPrimary,
+                                fontSize: r.titleFontSize,
+                                fontWeight: FontWeight.w600,
+                                height: 1.2,
+                              ),
+                        ),
 
-                      SizedBox(height: isSmallScreen ? 6 : 8),
+                        SizedBox(height: r.isSmallScreen ? 6 : 8),
 
-                      // Description
-                      Text(
-                        description,
-                        textAlign: TextAlign.center,
-                        style:
-                            Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                  color: AppTheme.textPrimary,
-                                  fontSize: isSmallScreen ? 12 : 13,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.3,
-                                ),
-                      ),
+                        // Description
+                        Text(
+                          description,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(
+                                color: AppTheme.textPrimary,
+                                fontSize: r.subtitleFontSize,
+                                fontWeight: FontWeight.w400,
+                                height: 1.3,
+                              ),
+                        ),
 
-                      // Spacing - responsive
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        height: (isSmallScreen ? 32 : 45),
-                      ),
+                        // Spacing - responsive
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          height: r.isSmallScreen ? 32 : 45,
+                        ),
 
-                      // Form Content (TextFields)
-                      formContent,
+                        // Form Content (TextFields)
+                        formContent,
 
-                      // Extra content (terms)
-                      if (extraContent != null) ...[
-                        SizedBox(height: isSmallScreen ? 12 : 16),
-                        extraContent!,
-                      ],
-
-                      SizedBox(
-                        height: extraContent != null
-                            ? (isSmallScreen ? 24 : 38)
-                            : (isSmallScreen ? 16 : 20),
-                      ),
-
-                      // Main Button
-                      PrimaryButton.auth(
-                        text: mainButtonText,
-                        onPressed: onMainButtonPressed,
-                        isLoading: isLoading,
-                      ),
-
-                      // Social login spacing - responsive ve dengeli
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        height: isSmallScreen ? 24 : 32,
-                      ),
-
-                      // Social Login Buttons - keyboard'da gizle
-                      BlocProvider(
-                        create: (_) => SocialLoginCubit(),
-                        child: const SocialLoginSection(),
-                      ),
-
-                      // Bottom spacing - responsive ve dengeli
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        height: isSmallScreen ? 32 : 40,
-                      ),
-
-                      // Bottom Action Link
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              bottomText,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall
-                                  ?.copyWith(
-                                    color: AppTheme.transparent50White,
-                                    fontSize: isSmallScreen ? 11 : 12,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.5,
-                                  ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          GestureDetector(
-                            onTap: onBottomActionPressed,
-                            child: Text(
-                              bottomActionText,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall
-                                  ?.copyWith(
-                                    color: AppTheme.textPrimary,
-                                    fontSize: isSmallScreen ? 11 : 12,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.5,
-                                  ),
-                            ),
-                          ),
+                        // Extra content (terms)
+                        if (extraContent != null) ...[
+                          SizedBox(height: r.mediumSpacing),
+                          extraContent!,
                         ],
-                      ),
-                    ],
+
+                        SizedBox(
+                          height: extraContent != null
+                              ? r.largeSpacing
+                              : r.mediumSpacing,
+                        ),
+
+                        // Main Button
+                        PrimaryButton.auth(
+                          text: mainButtonText,
+                          onPressed: onMainButtonPressed,
+                          isLoading: isLoading,
+                        ),
+
+                        // Social login spacing - responsive
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          height: r.largeSpacing,
+                        ),
+
+                        // Social Login Buttons
+                        BlocProvider(
+                          create: (_) => SocialLoginCubit(),
+                          child: const SocialLoginSection(),
+                        ),
+
+                        // Bottom spacing - responsive
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          height: r.largeSpacing,
+                        ),
+
+                        // Bottom Action Link
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                bottomText,
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall
+                                    ?.copyWith(
+                                      color: AppTheme.transparent50White,
+                                      fontSize: r.captionFontSize,
+                                      fontWeight: FontWeight.w400,
+                                      height: 1.5,
+                                    ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            GestureDetector(
+                              onTap: onBottomActionPressed,
+                              child: Text(
+                                bottomActionText,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall
+                                    ?.copyWith(
+                                      color: AppTheme.textPrimary,
+                                      fontSize: r.captionFontSize,
+                                      fontWeight: FontWeight.w400,
+                                      height: 1.5,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        // Final bottom padding
+                        SizedBox(height: r.largeSpacing),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
